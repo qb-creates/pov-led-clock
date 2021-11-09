@@ -7,11 +7,11 @@ Created a fully functional analog style pov(persistence of vision) clock. Persis
 1. Learned more about 3 phase motors.
 2. Learned about infrared signals.
 
-# Demonstration # 
+### Demonstration  
 [Video Demonstration 1](https://drive.google.com/file/d/1v3Be6J3bUKk0ls36GDCUN7odQP1oLxGW/view?usp=sharing)  
 [Video Demonstration 2](https://drive.google.com/file/d/1yo18ABhjNDQR3-ks-yBfjAM5YF_fPyle/view?usp=sharing)
 
-# Images #
+### Images
 ![Alt text](images/image1.jpeg)
 ![Alt text](images/image2.jpeg)
 ![Alt text](images/image3.jpeg)
