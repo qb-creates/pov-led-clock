@@ -12,7 +12,7 @@ Video Demonstration 1
 Video Demonstration 2
 
 Images
-![Scheme](images/scheme.jpg)
-![Scheme](images/scheme.jpg)
-![Scheme](images/scheme.jpg)
-![Scheme](images/scheme.jpg)
+![Scheme](images/image1.jpeg)
+![Scheme](images/image2.jpeg)
+![Scheme](images/image3.jpeg)
+![Scheme](images/image4.jpeg)
