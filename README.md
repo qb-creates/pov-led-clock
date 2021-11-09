@@ -11,8 +11,12 @@ Links
 Video Demonstration 1
 Video Demonstration 2
 
-#Images#
-<img src = "Images/image1.jpeg" width = "274" height = "205">
-<img src = "Images/image2.jpeg" width = "274" height = "205">
-<img src = "Images/image3.jpeg" width = "274" height = "205">
-<img src = "Images/image4.jpeg" width = "274" height = "205">
+# Links # 
+![Video Demonstration 1](https://drive.google.com/file/d/1v3Be6J3bUKk0ls36GDCUN7odQP1oLxGW/view?usp=sharing)  
+![Video Demonstration 2](https://drive.google.com/file/d/1yo18ABhjNDQR3-ks-yBfjAM5YF_fPyle/view?usp=sharing)
+
+# Images #
+![Alt text](images/image1.jpeg)
+![Alt text](images/image2.jpeg)
+![Alt text](images/image3.jpeg)
+![Alt text](images/image4.jpeg)
