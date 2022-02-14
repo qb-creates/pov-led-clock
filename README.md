@@ -11,7 +11,7 @@ Links
 [Video Demonstration 2](https://drive.google.com/file/d/1yo18ABhjNDQR3-ks-yBfjAM5YF_fPyle/view?usp=sharing)
 
 Images  
-<img src = "Images/image1.jpeg" width = "274" height = "205">
-<img src = "Images/image2.jpeg" width = "274" height = "205">
-<img src = "Images/image3.jpeg" width = "274" height = "205">
-<img src = "Images/image4.jpeg" width = "274" height = "205">
+<img src = "images/image1.jpeg" width = "274" height = "205">
+<img src = "images/image2.jpeg" width = "274" height = "205">
+<img src = "images/image3.jpeg" width = "274" height = "205">
+<img src = "images/image4.jpeg" width = "274" height = "205">
