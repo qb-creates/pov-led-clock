@@ -11,13 +11,13 @@ Links
 [Video Demonstration 2](https://drive.google.com/file/d/1yo18ABhjNDQR3-ks-yBfjAM5YF_fPyle/view?usp=sharing)
 
 Images  
-<div style="width: 110%">
-    <img src = "images/pov-led-clock.JPEG" width = "425" height = "519" style="padding: 0; margin: 0;">
-    <img src = "images/case-inside.JPEG" width = "425" height = "519">
+<div>
+    <img src = "images/pov-led-clock.JPEG" width = "410" height = "500" style="padding: 0; margin: 0;">
+    <img src = "images/case-inside.JPEG" width = "410" height = "500">
 </div>
-<div style="width: 110%">
-    <img src = "images/led-circuit-front.JPEG" width = "210" height = "280" style="padding: 0; margin: 0;">
-    <img src = "images/led-circuit-back.JPEG" width = "210" height = "280" style="padding: 0; margin: 0;">
-    <img src = "images/attiny-circuit-front.JPEG" width = "210" height = "280" style="padding: 0; margin: 0;">
-    <img src = "images/attiny-circuit-back.JPEG" width = "210" height = "280" style="padding: 0; margin: 0;">
+<div>
+    <img src = "images/led-circuit-front.JPEG" width = "195" height = "260" style="padding: 0; margin: 0;">
+    <img src = "images/led-circuit-back.JPEG" width = "195" height = "260" style="padding: 0; margin: 0;">
+    <img src = "images/attiny-circuit-front.JPEG" width = "195" height = "260" style="padding: 0; margin: 0;">
+    <img src = "images/attiny-circuit-back.JPEG" width = "195" height = "260" style="padding: 0; margin: 0;">
 </div>
