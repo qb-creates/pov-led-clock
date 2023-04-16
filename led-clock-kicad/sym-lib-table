@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 0)
+  (lib (name "LedClock-altium-import")(type "KiCad")(uri "${KIPRJMOD}/LedClock-altium-import.kicad_sym")(options "")(descr ""))
+)
