@@ -28,18 +28,13 @@ void PWM_16bit_initialize()
 	TCCR1A =  (0 << COM1A1) | (0 << COM1A0) | (0 << COM1B1) | (0 << COM1B0) | (0 << WGM11) | (0 << WGM10);
 	TCCR1B =  (1 << ICNC1) | (0 << ICES1) | (0 << WGM13) | (0 << WGM12)| (1 << CS12) | (0 << CS11) | (1 << CS10);
 	TIMSK = (1 << TICIE1) | (1 << OCIE1A); // interrupt for input capture enabled
-	OCR1A = 15606;//15625
+	OCR1A = 7812.5;
 }
 
 void PWM_8bit_initialize()
 {
-
-    	//This chooses your Compare output mode, your pre-scaler and what you want your OC0 to do.  The OC0 pin has to be set as an output to get a reading.
-	//Right now it is set up for PWM mode with a 50% duty cycle. OC0 is set up to clear on compare match. It is also set up with a clk/32 pre-scaler.
-	TCCR0 = (0 << WGM01) | (0 << WGM00) | (0 << CS02) | (1 << CS01) | (1 << CS00) | (0 << COM01) | (0 << COM00); 
-	TIFR = (0 << OCF0);
-	OCR0 = 18;   //This value is determined by what you want your duty cycle and average voltage
-				  // to be.  It is set to 127 for a %50 duty cycle because OC0 toggles
-				  // every time there is a compare match between TCNT0 and OCR0.
-
+    // Sets up a counter that will trigger a compare output every 1ms.
+	TCCR0 = (1 << WGM01) | (1 << CS01) | (1 << CS00); 
+	OCR0 = 125;   
+	TIMSK = 1 << OCIE0;
 }

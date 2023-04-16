@@ -19,6 +19,6 @@
 void Interrupt_initialize(void)
 {
 	GICR = (0 << INT1) | (1 << INT0); //Sets it up so that INT3 and INT0 are activate
-	MCUCR= 0b00000011; //Sets up INT3:0 to be activated whenever a logic low is detected
+	MCUCR= 0b00000010; //Sets up INT3:0 to be activated whenever a logic low is detected
 	sei();  //Enables interrupts
 }
