@@ -1,6 +1,7 @@
 .pio
 .vscode
 **/.gitignore
+**/*-backups
 package.json
 
 #Build Directories
