@@ -16,8 +16,8 @@ Images
     <img src = "images/case-inside.JPEG" width = "410" height = "500">
 </div>
 <div>
-    <img src = "images/led-circuit-front.JPEG" width = "195" height = "260" style="padding: 0; margin: 0;">
-    <img src = "images/led-circuit-back.JPEG" width = "195" height = "260" style="padding: 0; margin: 0;">
-    <img src = "images/attiny-circuit-front.JPEG" width = "195" height = "260" style="padding: 0; margin: 0;">
-    <img src = "images/attiny-circuit-back.JPEG" width = "195" height = "260" style="padding: 0; margin: 0;">
+    <img src = "images/led-circuit-front.JPEG" width = "202.5" height = "270" style="padding: 0; margin: 0;">
+    <img src = "images/led-circuit-back.JPEG" width = "202.5" height = "270" style="padding: 0; margin: 0;">
+    <img src = "images/attiny-circuit-front.JPEG" width = "202.5" height = "270" style="padding: 0; margin: 0;">
+    <img src = "images/attiny-circuit-back.JPEG" width = "202.5" height = "270" style="padding: 0; margin: 0;">
 </div>
