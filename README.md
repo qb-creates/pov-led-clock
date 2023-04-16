@@ -11,9 +11,13 @@ Links
 [Video Demonstration 2](https://drive.google.com/file/d/1yo18ABhjNDQR3-ks-yBfjAM5YF_fPyle/view?usp=sharing)
 
 Images  
-<img src = "images/pov-led-clock.JPEG" width = "290" height = "280">
-<img src = "images/led-circuit-front.JPEG" width = "210" height = "280">
-<img src = "images/led-circuit-back.JPEG" width = "210" height = "280">
-<img src = "images/case-inside.JPEG" width = "229" height = "280">
-<img src = "images/attiny-circuit-front.JPEG" width = "210" height = "280">
-<img src = "images/attiny-circuit-back.JPEG" width = "210" height = "280">
+<div>
+    <img src = "images/pov-led-clock.JPEG" width = "290" height = "280">
+</div>
+<div>
+    <img src = "images/led-circuit-front.JPEG" width = "210" height = "280">
+    <img src = "images/led-circuit-back.JPEG" width = "210" height = "280">
+    <img src = "images/case-inside.JPEG" width = "229" height = "280">
+    <img src = "images/attiny-circuit-front.JPEG" width = "210" height = "280">
+    <img src = "images/attiny-circuit-back.JPEG" width = "210" height = "280">
+</div>
