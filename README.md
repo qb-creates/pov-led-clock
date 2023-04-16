@@ -12,12 +12,12 @@ Links
 
 Images  
 <div>
-    <img src = "images/pov-led-clock.JPEG" width = "425" height = "519">
+    <img src = "images/pov-led-clock.JPEG" width = "425" height = "519" style="padding: 0; margin: 0;">
     <img src = "images/case-inside.JPEG" width = "425" height = "519">
 </div>
 <div>
-    <img src = "images/led-circuit-front.JPEG" width = "210" height = "280">
-    <img src = "images/led-circuit-back.JPEG" width = "210" height = "280">
-    <img src = "images/attiny-circuit-front.JPEG" width = "210" height = "280">
-    <img src = "images/attiny-circuit-back.JPEG" width = "210" height = "280">
+    <img src = "images/led-circuit-front.JPEG" width = "210" height = "280" style="padding: 0; margin: 0;">
+    <img src = "images/led-circuit-back.JPEG" width = "210" height = "280" style="padding: 0; margin: 0;">
+    <img src = "images/attiny-circuit-front.JPEG" width = "210" height = "280" style="padding: 0; margin: 0;">
+    <img src = "images/attiny-circuit-back.JPEG" width = "210" height = "280" style="padding: 0; margin: 0;">
 </div>
