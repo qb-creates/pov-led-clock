@@ -21,3 +21,6 @@ Images
     <img src = "images/attiny-circuit-front.JPEG" width = "202.5" height = "270" style="padding: 0; margin: 0;">
     <img src = "images/attiny-circuit-back.JPEG" width = "202.5" height = "270" style="padding: 0; margin: 0;">
 </div>
+
+Schematic
+<img src = "images/led-circuit-schematic.jpg">
