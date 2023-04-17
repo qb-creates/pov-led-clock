@@ -7,8 +7,7 @@ What I learned
 * Learned how to create a random number generator using a timer and the unpredictability of player input. 
 
 <h2>Video Demonstrations</h2> 
-https://drive.google.com/file/d/1v3Be6J3bUKk0ls36GDCUN7odQP1oLxGW/view?usp=sharing
-https://drive.google.com/file/d/1yo18ABhjNDQR3-ks-yBfjAM5YF_fPyle/view?usp=sharing
+https://www.youtube.com/watch?v=ZK3UpSKuKRA
 
 <h2>Images</h2>
 <div>
