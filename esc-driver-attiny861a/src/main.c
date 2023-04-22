@@ -23,7 +23,7 @@ void configurePWMPeripheral();
 bool getButtonDown(volatile uint8_t *inputRegister, int pin);
 
 int pwmCompareValue = STOP_MOTOR_VALUE;
-bool buttonArmed = false;
+bool buttonPressed = false;
 bool startMotor = false;
 
 ISR(TIMER1_OVF_vect)
@@ -81,26 +81,25 @@ void configurePWMPeripheral()
 /**
  * @brief Get the down/pressed state of the specified button.
  * 
- * @param inputRegister The input register address of the button pin we want to check.
+ * @param inputRegister Pass in the input register address of the pin we want to check.
  * @param pin The pin the button is connected to.
  * @return Will return true when the button is pressed down. Will return false until the button has been released and pressed again. 
  */
 bool getButtonDown(volatile uint8_t *inputRegister, int pin)
 {
-  int inputData = *inputRegister;
+  bool isPinLow = !(*inputRegister & _BV(pin));
+  bool isPinHigh = *inputRegister & _BV(pin);
 
-  if (!(inputData & _BV(pin)) && !buttonArmed)
+  if (isPinLow && !buttonPressed)
   {
-    // Button debounce delay.
     _delay_ms(300);
-    buttonArmed = true;
+    buttonPressed = true;
     return true;
   }
-  else if ((inputData & _BV(pin)) && buttonArmed)
+  else if (isPinHigh && buttonPressed)
   {
-    // Button debounce delay.
     _delay_ms(300);
-    buttonArmed = false;
+    buttonPressed = false;
   }
   return false;
 }
