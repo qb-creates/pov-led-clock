@@ -18,8 +18,8 @@
 #define STOP_MOTOR_VALUE 90
 #define TARGET_SPEED_VALUE 150
 
-void configureInputs();
 void configurePWMPeripheral();
+void configureInput(volatile uint8_t *ddr, uint8_t pin, bool enablePullup);
 bool getButtonDown(volatile uint8_t *inputRegister, int pin);
 
 int pwmCompareValue = STOP_MOTOR_VALUE;
@@ -33,15 +33,13 @@ ISR(TIMER1_OVF_vect)
 
 int main(void)
 {
-  configureInputs();
+  configureInput(&DDRA, PA7, true);
   configurePWMPeripheral();
   sei();
-  
+
   while (true)
   {
-    bool pressed = getButtonDown(&PINA, PIN7);
-    
-    if (pressed)
+    if (getButtonDown(&PINA, PIN7))
     {
       startMotor = !startMotor;
       pwmCompareValue = startMotor ? TARGET_SPEED_VALUE : STOP_MOTOR_VALUE;
@@ -50,18 +48,30 @@ int main(void)
 }
 
 /**
- * @brief Configures Pin A7 as input. Enables the pull up resistor for Pin A7.
+ * @brief Configures a pin as an input.
+ * 
+ * @param ddr Data Direction Register that the pin is located in.
+ * @param pin The pin that we want to configure as an input.
+ * @param enablePullup If true, the pull up resistor will be enabled for the pin.
  */
-void configureInputs()
+void configureInput(volatile uint8_t *ddr, uint8_t pin, bool enablePullup)
 {
-  DDRA = (uint8_t)~_BV(PA7);
-  PORTA |= _BV(PA7);
+  *ddr &= ~_BV(pin);
+
+  if (enablePullup)
+  {
+    PORTA |= _BV(pin);
+  }
+  else
+  {
+    PORTA &= ~_BV(pin);
+  }
 }
 
 /**
  * @brief Configures Timer/Couter 1B to operate in PWM mode with a frequency of 490 Hz. Enables Timer 1 Overflow interrupt.
  * Configures PB3 as an output for the PWM signal.
-*/
+ */
 void configurePWMPeripheral()
 {
   DDRB |= _BV(PB3);
@@ -74,16 +84,16 @@ void configurePWMPeripheral()
 
   // Enable Overflow interupt for Timer 1.
   TIMSK = 1 << TOIE1;
-  
+
   OCR1B = pwmCompareValue;
 }
 
 /**
  * @brief Get the down/pressed state of the specified button.
- * 
- * @param inputRegister Pass in the input register address of the pin we want to check.
+ *
+ * @param inputRegister The input register address of the pin we want to check.
  * @param pin The pin the button is connected to.
- * @return Will return true when the button is pressed down. Will return false until the button has been released and pressed again. 
+ * @return Will return true when the button is pressed down. Will return false until the button has been released and pressed again.
  */
 bool getButtonDown(volatile uint8_t *inputRegister, int pin)
 {
