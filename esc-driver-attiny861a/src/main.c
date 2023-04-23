@@ -82,7 +82,7 @@ void configurePWMPeripheral()
   // Selects a Prescaler of 128.
   TCCR1B |= _BV(CS13);
 
-  // Enable Overflow interupt for Timer 1.
+  // Enable Overflow interrupt for Timer 1.
   TIMSK = 1 << TOIE1;
 
   OCR1B = pwmCompareValue;
