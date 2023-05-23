@@ -3,11 +3,13 @@
  *
  * Author: Quentin Baker
  *
- * The full rotation time of lights equal to 28.62ms. This entire portion of code divides the time into 60
- * steps to represent 60 seconds and 60 minutes. Therefore, the 28.62ms was divided by 60 to 447us.
+ * The clock is rotating at about 1500 rpm (± 60rpm). One rotation takes about 40ms (± 1.6ms). The time for one rotation will be divided by 60.
+ * This will give us 60 steps of 666.67us. Each animation will be drawn in one of those 666.67us windows.
  * There is 60 instances of 447us to represent the 28.62ms full rotation.  In places where complex
- * animations like numbers need to be formed, the 666us were divided by 6 to have room to play with animation times.
- * This value became 79.5us.
+ * animations like numbers need to be drawn, the 666us will be divided by 6 to have room to play with animation times.
+ * This value became 111.111us. 
+ * 
+ * Using the ATmega32's internal 8Mhz oscillator.
  */
 
 #include <avr/interrupt.h>
@@ -23,8 +25,8 @@
 void configureInterupts();
 void configureTimer();
 
-bool rotationTrigger = false;
-bool secondsTrigger = false;
+volatile bool rotationTrigger = false;
+volatile bool secondsTrigger = false;
 
 ISR(ROTATION_COMPLETE)
 {
@@ -78,6 +80,6 @@ void configureTimer()
 
   // Enable Compare Output interrupt.
   TIMSK |= _BV(OCIE1A);
-  // OCR1A = 31249;
-  OCR1A = 1000;
+
+  OCR1A = 31249;
 }

@@ -29,13 +29,12 @@ void transmitData(char data, bool msb)
     {
         SPCR |= _BV(DORD);
     }
+
     /* Start transmission */
     SPDR = data;
 
     /* Wait for transmission complete */
-    while (!(SPSR & _BV(SPIF)))
-    {
-    }
+    loop_until_bit_is_set(SPSR, SPIF);
 }
 
 /**
@@ -43,24 +42,32 @@ void transmitData(char data, bool msb)
  *
  * @param data The array of bytes that should be transmitted.
  * @param count The number of bytes in the array.
+ * @param msb Transmit the most significant bit first. true/false
  */
-void transmitChars(char data[], int count)
+void transmitDataArray(char data[], int count, bool msb)
 {
+    if (msb)
+    {
+        SPCR &= ~_BV(DORD);
+    }
+    else
+    {
+        SPCR |= _BV(DORD);
+    }
+
     for (int i = 0; i < count; i++)
     {
         /* Start transmission */
         SPDR = data[i];
 
         /* Wait for transmission complete */
-        while (!(SPSR & _BV(SPIF)))
-        {
-        }
+        loop_until_bit_is_set(SPSR, SPIF);
     }
 }
 
 /**
  * @brief Will latch the data to the led drivers.
- * 
+ *
  */
 void latchData(void)
 {
