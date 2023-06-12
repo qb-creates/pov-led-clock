@@ -7,6 +7,8 @@
  * Input PA7 will start and stop the motor.
  * PWM Frequency = fck / (prescaller * 255).
  * 16000000Mhz / (128 * 255) = 490 Hz.
+ * 
+ * Using external 16Mhz crystal.
  */
 
 #include <avr/interrupt.h>
@@ -33,13 +35,13 @@ ISR(TIMER1_OVF_vect)
 
 int main(void)
 {
-  configureInput(&DDRA, PA7, true);
+  configureInput(&DDRA, PIN7, true);
   configurePWMPeripheral();
   sei();
 
   while (true)
   {
-    if (getButtonDown(&PINA, PIN7))
+    if (getButtonDown(&PINA, PINA7))
     {
       startMotor = !startMotor;
       pwmCompareValue = startMotor ? TARGET_SPEED_VALUE : STOP_MOTOR_VALUE;
@@ -50,21 +52,24 @@ int main(void)
 /**
  * @brief Configures a pin as an input.
  * 
- * @param ddr Data Direction Register that the pin is located in.
- * @param pin The pin that we want to configure as an input.
+ * @param ddr Data Direction Register that the input pin is associated with.
+ * @param pin The pin number that we want to configure as an input.
  * @param enablePullup If true, the pull up resistor will be enabled for the pin.
  */
 void configureInput(volatile uint8_t *ddr, uint8_t pin, bool enablePullup)
 {
   *ddr &= ~_BV(pin);
 
+  // Get the Data Register associated with the Data Direction Register 
+  volatile uint8_t *port = ++ddr;
+
   if (enablePullup)
   {
-    PORTA |= _BV(pin);
+    *port |= _BV(pin);
   }
   else
   {
-    PORTA &= ~_BV(pin);
+    *port &= ~_BV(pin);
   }
 }
 
