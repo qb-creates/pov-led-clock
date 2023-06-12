@@ -3,9 +3,9 @@
  *
  * Author: Quentin Baker
  *
- * The clock is rotating at about 1500 rpm (± 60rpm). One rotation takes about 40ms (± 1.6ms). The time for one rotation will be divided by 60.
- * This will give us 60 steps of 666.67us. Each animation will be drawn in one of those 666.67us windows.
- * There is 60 instances of 447us to represent the 28.62ms full rotation.  In places where complex
+ * The clock is rotating at about 1500 rpm. One rotation takes about 40ms (± 1.6ms). The time for one rotation will be divided by 60.
+ * This will give us 60 steps of 666.67us. Each animation will be drawn in during that 666.67us timeframe.
+ * There are 60 instances of 666.67us to represent the 40ms full rotation.  In places where complex
  * animations like numbers need to be drawn, the 666us will be divided by 6 to have room to play with animation times.
  * This value became 111.111us. 
  * 
@@ -25,14 +25,14 @@
 void configureInterupts();
 void configureTimer();
 
-volatile bool rotationTrigger = false;
+volatile bool rotationCompleteTrigger = false;
 volatile bool secondsTrigger = false;
 
 ISR(ROTATION_COMPLETE)
 {
-  if (!rotationTrigger)
+  if (!rotationCompleteTrigger)
   {
-    rotationTrigger = true;
+    rotationCompleteTrigger = true;
   }
 }
 
@@ -52,10 +52,10 @@ int main(void)
 
   while (true)
   {
-    if (rotationTrigger)
+    if (rotationCompleteTrigger)
     {
       drawClock();
-      rotationTrigger = false;
+      rotationCompleteTrigger = false;
     }
 
     if (secondsTrigger)
@@ -68,9 +68,9 @@ int main(void)
 
 void configureInterupts()
 {
-  GICR |= _BV(INT0);   // Sets it up so that INT3 and INT0 are activate
-  MCUCR |= _BV(ISC01); // Sets up INT3:0 to be activated whenever a logic low is detected
-  sei();               // Enables interrupts
+  GICR |= _BV(INT0);   // External Interrupt Request 0 is enabled
+  MCUCR |= _BV(ISC01); // The falling edge of INT0 generates an interrupt request
+  sei();               
 }
 
 void configureTimer()
@@ -81,5 +81,6 @@ void configureTimer()
   // Enable Compare Output interrupt.
   TIMSK |= _BV(OCIE1A);
 
-  OCR1A = 31249;
+  // We want our compare output interrupt to be trigger every 1 second.
+  OCR1A = (F_CPU / (2 * 256 * .5)) - 1;
 }

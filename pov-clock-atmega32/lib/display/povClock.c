@@ -3,11 +3,10 @@
  *
  * Author: Quentin Baker
  *
- * The drawClock function was measured to take about 12ms to complete not including the _delay_us() calls in the method.
- * using a delay of 80us gives us a total delay time of (80us * 6  * 60 steps = 28.8ms). 28.8ms summed with the 12ms it takes
- * to execute the other portions of code in the function givs us 40.8ms. That is the time it takes to complete one rotation.
- * 
- * Using the ATmega32's internal 8Mhz oscillator.
+ * The drawClock function was measured to take about 12ms to complete. This is not including the _delay_us() calls in the method.
+ * Using a delay of 81us for the _delay_us() calls gives us a total delay time of (81us * 6  * 60 steps = 29.16ms).
+ * 29.16ms summed with the 12ms it takes to execute the other portions of code in the drawClock function givs us a total time of 41.16ms.
+ *
  */
 
 #include "povClock.h"
@@ -15,142 +14,132 @@
 
 void updatePixels(const uint8_t hourNumberPixelData[][12]);
 
-uint8_t secondHandPosition = 60;
-uint8_t minutesHandPosition = 60;
+uint8_t secondHandPosition = 0;
+uint8_t minutesHandPosition = 0;
 uint8_t hourHandPosition = 25;
 
 /**
- * @brief Initializes the clock. Enables spi transmission.s
+ * @brief Initializes the clock. Enables spi transmission.
  *
  */
 void initializeClock()
 {
     spiMasterModeInit();
-
-    for (int i = 1; i < 8; i++)
-    {
-        char data[] = {i % 2, 0, 0, i % 2};
-
-        transmitDataArray(data, 4, true);
-        latchData();
-        _delay_ms(200);
-    }
+    transmitData(0x80, false);
+    latchData();
 }
 
 /**
  * @brief Will update the second, minute, and hour hand positions. Will add one to the
- * seconds hand. When seconds hand is at 60, the minutes hnad will update.
+ * seconds hand. When seconds hand is at 60, the minutes hand will update.
  */
 void updateHandPositions(void)
 {
-    --secondHandPosition;
-    if (secondHandPosition == 0)
+    ++secondHandPosition;
+    
+    if (secondHandPosition == 60)
     {
-        --minutesHandPosition;
-        secondHandPosition = 60;
+        ++minutesHandPosition;
+        secondHandPosition = 0;
 
         if (minutesHandPosition % 12 == 0)
         {
-            hourHandPosition--;
+            ++hourHandPosition;
         }
 
-        if (minutesHandPosition == 0)
+        if (minutesHandPosition == 59)
         {
-            minutesHandPosition = 59;
+            minutesHandPosition = 0;
         }
 
-        if (hourHandPosition == 0)
+        if (hourHandPosition == 59)
         {
-            hourHandPosition = 59;
+            hourHandPosition = 0;
         }
     }
 }
 
 /**
- * @brief 
+ * @brief
  */
 void drawClock(void)
 {
-    int positionCheck = 60;
-
     for (int row = 0; row < 60; row++)
     {
-        for (int i = 0; i < 6; i++)
+        // Reset our PixelData.
+        struct PixelData pixelData[6] = {{0x80, 0, 0, 0}};
+
+        // pixelData Byte3 will hold our Hour Markers Byte 1
+        pixelData[0].byte3 = clockHourMarkers[row][0];
+        pixelData[1].byte3 = clockHourMarkers[row][1];
+        pixelData[2].byte3 = clockHourMarkers[row][2];
+        pixelData[3].byte3 = clockHourMarkers[row][3];
+        pixelData[4].byte3 = clockHourMarkers[row][4];
+        pixelData[5].byte3 = clockHourMarkers[row][5];
+
+        // pixelData Byte4 will hold our Hour Markers Byte 2
+        pixelData[0].byte4 = clockHourMarkers[row][6];
+        pixelData[1].byte4 = clockHourMarkers[row][7];
+        pixelData[2].byte4 = clockHourMarkers[row][8];
+        pixelData[3].byte4 = clockHourMarkers[row][9];
+        pixelData[4].byte4 = clockHourMarkers[row][10];
+        pixelData[5].byte4 = clockHourMarkers[row][11];
+
+        if (hourHandPosition == row)
         {
-            clockPixelData[i].clockHandByte2 = 0x80;
-            clockPixelData[i].clockHandByte1 = 0x00;
+            // Include the Hour hand pixel data if the hour hand position is equal to the row we are drawing.
+            pixelData[2].byte1 |= 255;
+            pixelData[3].byte1 |= 255;
+
+            pixelData[0].byte2 |= 0b00001100;
+            pixelData[1].byte2 |= 0b00001110;
+            pixelData[2].byte2 |= 0b11111111;
+            pixelData[3].byte2 |= 0b11111111;
+            pixelData[4].byte2 |= 0b00001110;
+            pixelData[5].byte2 |= 0b00001100;
         }
 
-        clockPixelData[0].hourNumberByte2 = asdfff[row][0];
-        clockPixelData[1].hourNumberByte2 = asdfff[row][1];
-        clockPixelData[2].hourNumberByte2 = asdfff[row][2];
-        clockPixelData[3].hourNumberByte2 = asdfff[row][3];
-        clockPixelData[4].hourNumberByte2 = asdfff[row][4];
-        clockPixelData[5].hourNumberByte2 = asdfff[row][5];
-
-        clockPixelData[0].hourNumberByte1 = asdfff[row][6];
-        clockPixelData[1].hourNumberByte1 = asdfff[row][7];
-        clockPixelData[2].hourNumberByte1 = asdfff[row][8];
-        clockPixelData[3].hourNumberByte1 = asdfff[row][9];
-        clockPixelData[4].hourNumberByte1 = asdfff[row][10];
-        clockPixelData[5].hourNumberByte1 = asdfff[row][11];
-
-        if (hourHandPosition == positionCheck)
+        if (minutesHandPosition == row)
         {
-            clockPixelData[2].clockHandByte2 |= 255;
-            clockPixelData[3].clockHandByte2 |= 255;
+            // Include the Minute hand pixel data if the minute hand position is equal to the row we are drawing.
+            pixelData[2].byte1 |= 255;
+            pixelData[3].byte1 |= 255;
+            pixelData[2].byte2 |= 0b11111111;
+            pixelData[3].byte2 |= 0b11111111;
 
-            clockPixelData[0].clockHandByte1 |= 0b00001100;
-            clockPixelData[1].clockHandByte1 |= 0b00001110;
-            clockPixelData[2].clockHandByte1 |= 0b11111111;
-            clockPixelData[3].clockHandByte1 |= 0b11111111;
-            clockPixelData[4].clockHandByte1 |= 0b00001110;
-            clockPixelData[5].clockHandByte1 |= 0b00001100;
+            pixelData[0].byte3 |= 0b11000000;
+            pixelData[1].byte3 |= 0b11100000;
+            pixelData[2].byte3 |= 0b11110000;
+            pixelData[3].byte3 |= 0b11110000;
+            pixelData[4].byte3 |= 0b11100000;
+            pixelData[5].byte3 |= 0b11000000;
         }
 
-        if (minutesHandPosition == positionCheck)
+        if (secondHandPosition >= row)
         {
-            clockPixelData[2].clockHandByte2 |= 255;
-            clockPixelData[3].clockHandByte2 |= 255;
-            clockPixelData[2].clockHandByte1 |= 0b11111111;
-            clockPixelData[3].clockHandByte1 |= 0b11111111;
-
-            clockPixelData[0].hourNumberByte2 |= 0b11000000;
-            clockPixelData[1].hourNumberByte2 |= 0b11100000;
-            clockPixelData[2].hourNumberByte2 |= 0b11110000;
-            clockPixelData[3].hourNumberByte2 |= 0b11110000;
-            clockPixelData[4].hourNumberByte2 |= 0b11100000;
-            clockPixelData[5].hourNumberByte2 |= 0b11000000;
-        }
-
-        if (secondHandPosition <= positionCheck)
-        {
-            // Adds the seconds outline to this hour number.
-            clockPixelData[0].hourNumberByte1 |= 0b00000001;
-            clockPixelData[1].hourNumberByte1 |= 0b00000001;
-            clockPixelData[2].hourNumberByte1 |= 0b00000001;
-            clockPixelData[3].hourNumberByte1 |= 0b00000001;
-            clockPixelData[4].hourNumberByte1 |= 0b00000001;
-            clockPixelData[5].hourNumberByte1 |= 0b00000001;
+            // Include the seconds outline pixel data if the seconds outline position is >= to the row we are drawing.
+            pixelData[0].byte4 |= 0b00000001;
+            pixelData[1].byte4 |= 0b00000001;
+            pixelData[2].byte4 |= 0b00000001;
+            pixelData[3].byte4 |= 0b00000001;
+            pixelData[4].byte4 |= 0b00000001;
+            pixelData[5].byte4 |= 0b00000001;
         }
 
         /**This is where the instances of 666us are separated by six for animation design.
         each additional frame adds on to how long the lights in that particular byte stay on
         or if they are on at*/
+
+        /*We transmit the data stored the pixelData struct. Because the two led driver IC's are cascaded together,
+        we transmit byte4 first and work our way down to byte 1.*/
         for (int i = 0; i < 6; i++)
         {
-            transmitData(clockPixelData[i].hourNumberByte1, true);
-            transmitData(clockPixelData[i].hourNumberByte2, false);
-            transmitData(clockPixelData[i].clockHandByte1, true);
-            transmitData(clockPixelData[i].clockHandByte2, false);
+            transmitData(pixelData[i].byte4, true);
+            transmitData(pixelData[i].byte3, false);
+            transmitData(pixelData[i].byte2, true);
+            transmitData(pixelData[i].byte1, false);
             latchData();
-            _delay_us(83);
+            _delay_us(81);
         }
-
-        positionCheck--;
     }
-
-    // char data[4] = {128, 0, 0, 128};
-    // transmitDataArray(data, 4, false);
-    // latchData();
 }
