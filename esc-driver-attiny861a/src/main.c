@@ -2,7 +2,7 @@
  * esc-driver-attiny861a
  *
  * Author: Quentin Baker
- * MCU: AtTiny861a
+ * MCU: ATtiny861a
  * Clock: External 16MHz crystal
  *
  * Configures a PWM output that can be used to drive an ESC (Electronic Speed Controller).
