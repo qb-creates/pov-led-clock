@@ -6,9 +6,9 @@
  * Clock: External 16MHz crystal
  *
  * Configures a PWM output that can be used to drive an ESC (Electronic Speed Controller).
- * A button on Input PA7 will be used to start and stop the motor. Button debouncing is
- * accomplished in software by using a 300ms delay after detecting the first pulse before
- * checking again. 
+ * A SPST normally open push button connected to PINA7 will be used to start and stop the motor. 
+ * Button debouncing is accomplished in software by using a 300ms delay after detecting the 
+ * first pulse before checking again. 
  *
  * PWM Frequency = fck / (prescaller * 255).
  * 16000000Mhz / (128 * 255) = 490 Hz.
