@@ -2,119 +2,110 @@
  * esc-driver-attiny861a
  *
  * Author: Quentin Baker
+ * MCU: AtTiny861a
+ * Clock: External 16MHz crystal
  *
  * Configures a PWM output that can be used to drive an ESC (Electronic Speed Controller).
- * Input PA7 will start and stop the motor.
+ * A button on Input PA7 will be used to start and stop the motor. Button debouncing is
+ * accomplished in software by using a 300ms delay after detecting the first pulse before
+ * checking again. 
+ *
  * PWM Frequency = fck / (prescaller * 255).
  * 16000000Mhz / (128 * 255) = 490 Hz.
- * 
- * Using external 16Mhz crystal.
  */
 
 #include <avr/interrupt.h>
 #include <avr/io.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <util/delay.h>
-#include <stdbool.h>
 
-#define STOP_MOTOR_VALUE 90
-#define TARGET_SPEED_VALUE 150
+#define STOP_MOTOR_COMPARE_VALUE 127  // Duty cycle of 50%. Time high will be 1ms
+#define START_MOTOR_COMPARE_VALUE 150 // Duty cycle of 59%. Time high will be 1.18ms
 
-void configurePWMPeripheral();
-void configureInput(volatile uint8_t *ddr, uint8_t pin, bool enablePullup);
-bool getButtonDown(volatile uint8_t *inputRegister, int pin);
+void configurePWM();
+void configureButtonInput();
+bool getButtonDown();
 
-int pwmCompareValue = STOP_MOTOR_VALUE;
+int pwmCompareValue = STOP_MOTOR_COMPARE_VALUE;
 bool buttonPressed = false;
 bool startMotor = false;
 
 ISR(TIMER1_OVF_vect)
 {
-  OCR1B = pwmCompareValue;
+    OCR1B = pwmCompareValue;
 }
 
 int main(void)
 {
-  configureInput(&DDRA, PIN7, true);
-  configurePWMPeripheral();
-  sei();
-
-  while (true)
-  {
-    if (getButtonDown(&PINA, PINA7))
+    configureButtonInput();
+    configurePWM();
+    sei();
+    
+    while (true)
     {
-      startMotor = !startMotor;
-      pwmCompareValue = startMotor ? TARGET_SPEED_VALUE : STOP_MOTOR_VALUE;
+        if (getButtonDown())
+        {
+            startMotor = !startMotor;
+            pwmCompareValue = startMotor ? START_MOTOR_COMPARE_VALUE : STOP_MOTOR_COMPARE_VALUE;
+        }
     }
-  }
 }
 
 /**
- * @brief Configures a pin as an input.
+ * @brief Configures PINA7 as input.
+ */
+void configureButtonInput()
+{
+    // Configures PINA7 as an input.
+    DDRA &= ~_BV(PA7);
+
+    // Enables the pull up resistor for PINA7
+    PORTA |= _BV(PA7);
+}
+
+/**
+ * @brief Configures Timer 1B to operate in PWM mode with a frequency of 490 Hz.
+ */
+void configurePWM()
+{
+    // Configure PB3 as an output.
+    DDRB |= _BV(PB3);
+
+    // Enable PWM mode based on comparator OCR1B. Clear OC1B on match and set OC1B when TCNT1 = 0x000;
+    TCCR1A |= _BV(COM1B1) | _BV(PWM1B);
+
+    // Selects a Prescaler of 128.
+    TCCR1B |= _BV(CS13);
+
+    // Enable Overflow interrupt for Timer 1.
+    TIMSK = 1 << TOIE1;
+
+    // Sets the duty cycle.
+    OCR1B = pwmCompareValue;
+}
+
+/**
+ * @brief Will return the down/pressed state of the button located on PINA7.
  * 
- * @param ddr Data Direction Register that the input pin is associated with.
- * @param pin The pin number that we want to configure as an input.
- * @param enablePullup If true, the pull up resistor will be enabled for the pin.
+ * @return Will return true the first time the button is pressed. Will return false until the button has been released and pressed again.
  */
-void configureInput(volatile uint8_t *ddr, uint8_t pin, bool enablePullup)
+bool getButtonDown()
 {
-  *ddr &= ~_BV(pin);
+    bool isPinHigh = PINA & _BV(PINA7);
 
-  // Get the Data Register associated with the Data Direction Register 
-  volatile uint8_t *port = ++ddr;
+    if (!isPinHigh && !buttonPressed)
+    {
+        buttonPressed = true;
+        _delay_ms(300);
 
-  if (enablePullup)
-  {
-    *port |= _BV(pin);
-  }
-  else
-  {
-    *port &= ~_BV(pin);
-  }
-}
+        return true;
+    }
+    else if (isPinHigh && buttonPressed)
+    {
+        buttonPressed = false;
+        _delay_ms(300);
+    }
 
-/**
- * @brief Configures Timer/Couter 1B to operate in PWM mode with a frequency of 490 Hz. Enables Timer 1 Overflow interrupt.
- * Configures PB3 as an output for the PWM signal.
- */
-void configurePWMPeripheral()
-{
-  DDRB |= _BV(PB3);
-
-  // Enable PWM mode based on comparator OCR1B. Clear OC1B on match and set OC1B when TCNT1 = 0x000;
-  TCCR1A |= _BV(COM1B1) | _BV(PWM1B);
-
-  // Selects a Prescaler of 128.
-  TCCR1B |= _BV(CS13);
-
-  // Enable Overflow interrupt for Timer 1.
-  TIMSK = 1 << TOIE1;
-
-  OCR1B = pwmCompareValue;
-}
-
-/**
- * @brief Get the down/pressed state of the specified button.
- *
- * @param inputRegister The input register address of the pin we want to check.
- * @param pin The pin the button is connected to.
- * @return Will return true when the button is pressed down. Will return false until the button has been released and pressed again.
- */
-bool getButtonDown(volatile uint8_t *inputRegister, int pin)
-{
-  bool isPinLow = !(*inputRegister & _BV(pin));
-  bool isPinHigh = *inputRegister & _BV(pin);
-
-  if (isPinLow && !buttonPressed)
-  {
-    _delay_ms(300);
-    buttonPressed = true;
-    return true;
-  }
-  else if (isPinHigh && buttonPressed)
-  {
-    _delay_ms(300);
-    buttonPressed = false;
-  }
-  return false;
+    return false;
 }
