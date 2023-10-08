@@ -1,7 +1,6 @@
 #ifndef SPIUTILITY_H
 #define SPIUTILITY_H
 
-#include <avr/io.h>
 #include <stdbool.h>
 
 void spiMasterModeInit(void);

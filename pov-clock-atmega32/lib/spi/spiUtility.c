@@ -1,15 +1,15 @@
 #include "spiUtility.h"
+#include <avr/io.h>
 
 /**
  * @brief Initializes the spi peripheral in master mode.
- *
  */
 void spiMasterModeInit(void)
 {
-    /* Set MOSI, SCK, and Latch as output.*/
+    // Set MOSI, SCK, and Latch as output.
     DDRB |= _BV(PB4) | _BV(PB5) | _BV(PB7);
 
-    /* Enable SPI, Master, set clock frequency fck/4 */
+    // Enable SPI, Master, set clock frequency fck/4
     SPCR |= _BV(SPE) | _BV(MSTR) | _BV(CPOL);
 }
 
@@ -21,25 +21,18 @@ void spiMasterModeInit(void)
  */
 void transmitData(char data, bool msb)
 {
-    if (msb)
-    {
-        SPCR &= ~_BV(DORD);
-    }
-    else
-    {
-        SPCR |= _BV(DORD);
-    }
+    // Select the data order for transmission.
+    SPCR = msb ? (SPCR & ~_BV(DORD)) : (SPCR | _BV(DORD));
 
-    /* Start transmission */
+    // Start data transmission
     SPDR = data;
-
-    /* Wait for transmission complete */
+    
+    // Wait for transmission complete
     loop_until_bit_is_set(SPSR, SPIF);
 }
 
 /**
  * @brief Will latch the data to the led drivers.
- *
  */
 void latchData(void)
 {
