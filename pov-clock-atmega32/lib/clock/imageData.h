@@ -1,25 +1,49 @@
-#ifndef PIXELDATA_H
-#define PIXELDATA_H
+#ifndef IMAGEDATA_H
+#define IMAGEDATA_H
 
 #include <stdint.h>
 
 /**
- * @brief
- *
+ * @brief Multidimensional array that holds the image data for the "seconds" outline.
  */
-struct PixelData
-{
-    uint8_t byte1;
-    uint8_t byte2;
-    uint8_t byte3;
-    uint8_t byte4;
+const uint8_t secondsOutlineImageData[6][4] = {
+    {0x00, 0x00, 0x00, 0x01},
+    {0x00, 0x00, 0x00, 0x01},
+    {0x00, 0x00, 0x00, 0x01},
+    {0x00, 0x00, 0x00, 0x01},
+    {0x00, 0x00, 0x00, 0x01},
+    {0x00, 0x00, 0x00, 0x01},
 };
 
 /**
- * @brief Multidimensional array that holds the data for all of the hour markers on the clock.
- * This multidimensional array consist of 60 rows that hold 12 bytes of data.
- * The markers start with the 2 in the twelve hour marker. It then goes clock wise drawing the rest of the notches and number until it
- * reaches the 1 in the twelve hour marker.
+ * @brief Multidimensional array that holds the image data for the "minute" hand.
+ */
+const uint8_t minuteHandImageData[6][4] = {
+    {0x00, 0x00, 0xC0, 0x00},
+    {0x00, 0x00, 0xE0, 0x00},
+    {0xFF, 0xFF, 0xF0, 0x00},
+    {0xFF, 0xFF, 0xF0, 0x00},
+    {0x00, 0x00, 0xE0, 0x00},
+    {0x00, 0x00, 0xC0, 0x00},
+};
+
+/**
+ * @brief Multidimensional array that holds the image data for the "hour" hand.
+ */
+const uint8_t hourHandImageData[6][4] = {
+    {0x00, 0x0C, 0x00, 0x00},
+    {0x00, 0x0E, 0x00, 0x00},
+    {0xFF, 0xFF, 0x00, 0x00},
+    {0xFF, 0xFF, 0x00, 0x00},
+    {0x00, 0x0E, 0x00, 0x00},
+    {0x00, 0x0C, 0x00, 0x00},
+};
+
+/**
+ * @brief Multidimensional array that holds the Image data for the clock. This includes all hour markers and hour numbers.
+ * The seconds outline, minute hand, and hour hand are not included in this image data. The hour markers start with the 2 
+ * in the twelve hour marker. It then goes clock wise projecting the rest of the markers and numbers until it reaches 
+ * the 1 in the twelve hour marker.
  */
 const uint8_t clockImageData[60][12] = {
     {0x00, 0x00, 0x00, 0x0C, 0x0E, 0x0F, 0x00, 0x00, 0x00, 0x0C, 0x0E, 0x06}, // Twelve

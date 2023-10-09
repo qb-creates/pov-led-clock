@@ -9,11 +9,12 @@
  *   the motor completes a full rotation. An IR Detector connected to External Interrupt 0 is used to notify 
  *   the circuit that a full rotation of the motor has occured. This will let the circuit know that it is back 
  *   at its home position. A 2 second CTC timer is used to add one second to the clock on each CTC compare 
- *   interrupt. This interrupt will be triggered every 1 second.
+ *   interrupt. This interrupt will be triggered every 1 second. Two 16 channel LED drivers are used to drive
+ *   the LEDs. Communication with the LED drivers is done using the SPI protocol.
  *
  * MCU Details:
  *   - MCU: ATmega32
- *   - Oscillator: External 16MHz crystal
+ *   - Oscillator: Internal 8MHz oscillator
  * 
  * CTC Waveform Frequency Equation
  *   - Waveform Frequency = fck / (2 * prescaler * (1 + OCRnA)).
@@ -22,14 +23,14 @@
  *   - Waveform Frequency = 0.5Hz = 2 seconds
  *   - fck = 8000000Mhz
  *   - prescaler = 256
- *   - OCRnA = ?
+ *   - OCR1A = ?
  * 
  * Rearranged formula to solve for OCRnA:
- *   - OCRnA = (fck / (2 * prescaler * Waveform Frequency)) - 1
+ *   - OCR1A = (fck / (2 * prescaler * Waveform Frequency)) - 1
  * 
  * Solve for OCRnA
- *   - OCRnA = (8000000Mhz / (2 * 256 * 0.5Hz)) - 1 
- *   - OCRnA = 31249
+ *   - OCR1A = (8000000Mhz / (2 * 256 * 0.5Hz)) - 1 
+ *   - OCR1A = 31249
  */
 
 #include <avr/interrupt.h>
@@ -41,7 +42,6 @@
 
 #define ROTATION_COMPLETE INT0_vect
 #define SECONDS_TIMER TIMER1_COMPA_vect
-#define OCR1A_Value 31249
 
 void configureRotationInterupt(void);
 void configureTimer(void);
@@ -113,5 +113,5 @@ void configureTimer(void)
     // Enable Compare Output interrupt.
     TIMSK |= _BV(OCIE1A);
 
-    OCR1A = OCR1A_Value;
+    OCR1A = 31249;
 }

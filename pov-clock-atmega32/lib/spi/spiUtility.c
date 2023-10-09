@@ -32,7 +32,7 @@ void transmitData(char data, bool msb)
 }
 
 /**
- * @brief Will latch the data to the led drivers.
+ * @brief Latch the data to the led drivers.
  */
 void latchData(void)
 {
