@@ -5,13 +5,17 @@
  *
  * Description:
  *   This file contains methods that will project the clock image and add seconds to the clock.
- *   The clock is rotating at about 1500 rpm. One rotation takes about 40ms (± 1.6ms). The time for one rotation will be divided by 60.
- *   This will give us 60 steps of 666.67us. Each section of the clock image will be projected during that 666.67us timeframe.
- *   The 666us will be divided by 6 to have room to project a specific image during that time frame. This value became 111.111us.
+ *   The clock is rotating at about 1500 rpm. One rotation takes about 40ms (± 1.6ms). The time 
+ *   for one rotation will be divided by 60. This will give us 60 steps of 666.67us. Each section
+ *   of the clock image will be projected during that 666.67us timeframe.  The 666us will be 
+ *   divided by 6. A section of the clock image will be projectected every 111.11us. For example, 
+ *   the number 3 on the clock will be projected during the 666us window. Each slice of the number
+ *   3 will be projected every 111.11us.
  *
- *   The drawClock function was measured to take about 12ms to complete. This is not including the _delay_us() calls in the method.
- *   Using a delay of 81us for the _delay_us() calls gives us a total delay time of (81us * 6  * 60 steps = 29.16ms).
- *   29.16ms summed with the 12ms it takes to execute the other portions of code in the drawClock function givs us a total time of 41.16ms.
+ *   The drawClock function was measured to take about 12ms to complete. This is not including the 
+ *   _delay_us() calls in the method. Using a delay of 81us for the _delay_us() calls gives us a total 
+ *   delay time of (81us * 6  * 60 steps = 29.16ms). 29.16ms summed with the 12ms it takes to execute 
+ *   the other lines of code in the drawClock function givs us a total rotation time of 41.16ms.
  */
 
 #include <avr/interrupt.h>
@@ -26,8 +30,8 @@ uint8_t minuteHandPosition = 0;
 uint8_t hourHandPosition = 25;
 
 /**
- * @brief Initializes the clock. Enables spi transmission.
- *
+ * @brief Initializes the clock. Call this method in order to enable spi communication
+ * with the LED drivers.
  */
 void initializeClock(void)
 {
@@ -45,9 +49,6 @@ void addSecondToClock(void)
 
     if (secondsOutlinePosition == 60)
     {
-        // Reset seconds outline position
-        secondsOutlinePosition = 0;
-
         // Move the minute hand to the next position on the clock.
         ++minuteHandPosition;
         
@@ -60,15 +61,15 @@ void addSecondToClock(void)
 
         if (minuteHandPosition == 59)
         {
-            // Reset minute hand position
             minuteHandPosition = 0;
         }
         
         if (hourHandPosition == 59)
         {
-            // Reset hour hand position
             hourHandPosition = 0;
         }
+
+        secondsOutlinePosition = 0;
     }
 }
 
