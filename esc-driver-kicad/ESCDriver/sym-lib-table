@@ -1,0 +1,7 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "CustomComponents")(type "KiCad")(uri "${KIPRJMOD}/CustomComponents.kicad_sym")(options "")(descr ""))
+  (lib (name "esc_30a_ubec_5v_3a")(type "KiCad")(uri "${KIPRJMOD}/esc_30a_ubec_5v_3a.kicad_sym")(options "")(descr ""))
+  (lib (name "wireless_power_coil_5v_200ma")(type "KiCad")(uri "${KIPRJMOD}/wireless_power_coil_5v_200ma.kicad_sym")(options "")(descr ""))
+  (lib (name "bldc_motor")(type "KiCad")(uri "${KIPRJMOD}/bldc_motor.kicad_sym")(options "")(descr ""))
+)
