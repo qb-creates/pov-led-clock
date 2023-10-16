@@ -28,5 +28,5 @@ https://www.youtube.com/watch?v=ZK3UpSKuKRA
 
 <h2>ESC Driver and Motor Schematic</h2>
 <div>
-    <img src = "images/esc-driver-circuit-schematic.jpg">
+    <img src = "images/esc-driver-circuit-schematic.JPG">
 </div>
