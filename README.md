@@ -21,7 +21,12 @@ https://www.youtube.com/watch?v=ZK3UpSKuKRA
     <img src = "images/attiny-circuit-back.JPEG" width = "203" height = "270" style="padding: 0; margin: 0;">
 </div>
 
-<h2>Schematic</h2>
+<h2>LED Clock Schematic</h2>
 <div>
     <img src = "images/led-circuit-schematic.jpg">
+</div>
+
+<h2>ESC Driver and Motor Schematic</h2>
+<div>
+    <img src = "images/esc-driver-circuit-schematic.jpg">
 </div>
