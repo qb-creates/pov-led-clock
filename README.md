@@ -10,8 +10,10 @@ Created a fully functional analog style pov(persistence of vision) clock. Persis
  at its home position. A 2 second CTC timer is used to add one second to the clock on each CTC compare 
  interrupt. This interrupt will be triggered every 1 second. Two 16 channel LED drivers are used to drive
  the LEDs. Communication with the LED drivers is done using the SPI protocol.
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=6KemDWqXEEw
-" target="_blank"><img src="images/pov-led-clock-powered.png" alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+ <div style="margin: auto;">
+    <a href="http://www.youtube.com/watch?feature=player_embedded&v=6KemDWqXEEw" target="_blank"><img src="images/pov-led-clock-powered.png"></a>
+ </div>
 * Project Video (YouTube): https://www.youtube.com/watch?v=ZK3UpSKuKRA
 
 <h2> Table of Contents</h2>
