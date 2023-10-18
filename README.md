@@ -1,5 +1,4 @@
 # Persistence of Vision (POV) Clock
-<!-- Created a fully functional analog style pov(persistence of vision) clock. Persistence of vision displays are generally LED displays which 'shows' images by displaying a section of an image at a given time, in quick rapid succession. The human brain perceives this as a continuous image. I accomplish this by attaching my microcontroller board and LEDs to the motor of a hard drive. A hard drive motor was used by it is a three phase motor and it is also spins fast enough to make the image look complete and not have any stutters. An IR remote was used to set the time on the clock upon power up. A PWM signal made from a 555 timer was used to drive a speed controller which controls the speed of our motor. This project was designed, built, and programmed by me. -->
  <div align="center">
     <!-- <img src="images/pov-led-clock-powered.png" width = "446" height = "428"> -->
     <img src="images/pov-led-clock-powered.png" width = "335" height = "321">
@@ -40,8 +39,8 @@ Persistence of vision displays are generally LED displays which 'shows' images b
 
 ## Parts List <a name="partslist"></a>
 
-# Clock Circuit <a name="clockcircuit"></a>
-## Description <a name="clockdescription"></a>
+## Clock Circuit <a name="clockcircuit"></a>
+### Description <a name="clockdescription"></a>
  This circuit will project the image of an anolog clock using the idea of POV (Persistence of Vision).
  The circuit is mounted to a brushless motor and will project the image of the clock everytime the
  motor completes a full rotation. An IR Detector connected to External Interrupt 0 is used to notify 
@@ -53,9 +52,9 @@ Persistence of vision displays are generally LED displays which 'shows' images b
     <img src = "images/led-circuit-schematic.jpg">
 </div>
 
-## LED Driver <a name="leddriver"></a>
-## IR Receiver <a name="irreceiver"></a>
-## Notes <a name="clockcircuitnotes"></a>
+### LED Driver <a name="leddriver"></a>
+### IR Receiver <a name="irreceiver"></a>
+### Notes <a name="clockcircuitnotes"></a>
 
 ## ESC Driver Circuit<a name="escdriver"></a>
 This circuit produces a PWM output that is used to drive an ESC (Electronic Speed Controller).
