@@ -19,22 +19,44 @@ Created a fully functional analog style pov(persistence of vision) clock. Persis
 
 <h2> Table of Contents</h2>
 
+- [Overview](#overview)
+- [Software](#software)
 - [Clock Circuit](#clockcircuit)
-- [ESC Driver](#escdriver)
-- [Considerations](#considerations)
+    - [Description](#clockdescription) <!-- Description of the circuit. Schematic. Double sided board for space-->
+    - [LED Driver](#leddriver) <!-- Description of how data is transfered to led sinks -->
+    - [IR Receiver](#irreceiver) <!-- External interrupt-->
+    - [Notes](#clockcircuitnotes) <!--Leaving out crystal because of balance. Modifying isp header  If you use crystal you will need to update FCPU and timer OCR-->
+- [ESC Driver Circuit](#escdriver)
+    - [Description](#escdescription) <!-- Description of the circuit. Schematic image.-->
+    - [LED Driver](#leddriver) <!-- Description of how data is transfered to led sinks -->
+    - [IR Receiver](#irreceiver) <!-- External interrupt-->
+    - [Notes](#esccircuitnotes) <!--Choose a crystal where you can get pwm frequency between 50 - 500hz. Maybe include a small capacitor for button debouncing-->
+- [Hardware](#hardware)
 - [Power Supply](#powersupply)
 - [Parts List](#partslist)
-- [Software](#software)
 
-## Clock Circuit <a name="clockcircuit"></a>
+
+## Overview <a name="overview"></a>
+
+## Software <a name="software"></a>
+VSCode with platform.io extension
+AVRDude to deploy
+KiCad design pcb
+AutoDesk fusion for the case
+
+## Parts List <a name="partslist"></a>
+
+# Clock Circuit <a name="clockcircuit"></a>
+## Description
 <div>
     <img src = "images/led-circuit-schematic.jpg">
 </div>
-<!-- motor info
-esc
-case -->
 
-## ESC Driver <a name="escdriver"></a>
+## LED Driver
+## IR Receiver
+## Notes
+
+## ESC Driver Circuit<a name="escdriver"></a>
 <div>
     <img src = "images/esc-driver-circuit-schematic.JPG">
 </div>
@@ -42,7 +64,7 @@ case -->
 esc
 case -->
 
-## Considerations <a name="considerations"></a>
+## Hardware <a name="hardware"></a>
 <!-- motor info
 esc
 case
@@ -51,14 +73,6 @@ ir transmitter -->
 ## Power Supply <a name="powersupply"></a>
 <!-- power supply
 wireless power -->
-
-## Parts List <a name="partslist"></a>
-
-## Software <a name="software"></a>
-VSCode with platform.io extension
-AVRDude to deploy
-KiCad design pcb
-AutoDesk fusion for the case
 
 <h2>Images</h2>
 <div>
