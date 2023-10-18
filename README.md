@@ -11,14 +11,19 @@ Created a fully functional analog style pov(persistence of vision) clock. Persis
  interrupt. This interrupt will be triggered every 1 second. Two 16 channel LED drivers are used to drive
  the LEDs. Communication with the LED drivers is done using the SPI protocol. -->
 
+- Project Video (YouTube): https://www.youtube.com/watch?v=ZK3UpSKuKRA
  <div align="center">
     <!-- <img src="images/pov-led-clock-powered.png" width = "446" height = "428"> -->
     <img src="images/pov-led-clock-powered.png" width = "335" height = "321">
  </div>
-* Project Video (YouTube): https://www.youtube.com/watch?v=ZK3UpSKuKRA
 
 <h2> Table of Contents</h2>
-
+- Clock Circuit
+- ESC Driver
+- Considerations
+- Power Supply
+- Parts List
+- Software
 <h2>Clock Circuit</h2>
 <div>
     <img src = "images/led-circuit-schematic.jpg">
