@@ -18,12 +18,14 @@ Created a fully functional analog style pov(persistence of vision) clock. Persis
  </div>
 
 <h2> Table of Contents</h2>
+
 - Clock Circuit
 - ESC Driver
 - Considerations
 - Power Supply
 - Parts List
 - Software
+
 <h2>Clock Circuit</h2>
 <div>
     <img src = "images/led-circuit-schematic.jpg">
