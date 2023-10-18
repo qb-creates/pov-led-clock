@@ -19,14 +19,14 @@ Created a fully functional analog style pov(persistence of vision) clock. Persis
 
 <h2> Table of Contents</h2>
 
-- Clock Circuit
-- ESC Driver
-- Considerations
-- Power Supply
-- Parts List
-- Software
+[Clock Circuit](#clockcircuit)
+[ESC Driver](#escdriver)
+[Considerations](#considerations)
+[Power Supply](#powersupply)
+[Parts List](#partslist)
+[Software](#software)
 
-<h2>Clock Circuit</h2>
+## Clock Circuit <a name="clockcircuit"></a>
 <div>
     <img src = "images/led-circuit-schematic.jpg">
 </div>
@@ -34,7 +34,7 @@ Created a fully functional analog style pov(persistence of vision) clock. Persis
 esc
 case -->
 
-<h2>ESC Driver</h2>
+## ESC Driver <a name="escdriver"></a>
 <div>
     <img src = "images/esc-driver-circuit-schematic.JPG">
 </div>
@@ -42,19 +42,19 @@ case -->
 esc
 case -->
 
-<h2>Considerations</h2>
+## Considerations <a name="considerations"></a>
 <!-- motor info
 esc
 case
 ir transmitter -->
 
-<h2>Power Supply</h2>
+## Power Supply <a name="powersupply"></a>
 <!-- power supply
 wireless power -->
 
-<h2>Parts List</h2>
+## Parts List <a name="partslist"></a>
 
-<h2>Software</h2>
+## Software <a name="software"></a>
 VSCode with platform.io extension
 AVRDude to deploy
 KiCad design pcb
