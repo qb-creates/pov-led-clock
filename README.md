@@ -12,8 +12,8 @@ Created a fully functional analog style pov(persistence of vision) clock. Persis
  the LEDs. Communication with the LED drivers is done using the SPI protocol. -->
 
  <div>
-    <img src="images/pov-led-clock-powered.png" width = "446" height = "428" style="padding: 0; margin: 0;">
-        <a href="http://www.youtube.com/watch?feature=player_embedded&v=6KemDWqXEEw" style="padding: 0; margin: 0;"></a>
+    <img src="images/pov-led-clock-powered.png" width = "446" height = "428">
+        <a href="http://www.youtube.com/watch?feature=player_embedded&v=6KemDWqXEEw"></a>
     </img>
  </div>
 * Project Video (YouTube): https://www.youtube.com/watch?v=ZK3UpSKuKRA
