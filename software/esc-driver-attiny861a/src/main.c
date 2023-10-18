@@ -5,10 +5,9 @@
  *
  * Description:
  *   Configures a PWM output that is used to drive an ESC (Electronic Speed Controller).
- *   A SPST normally open push button connected to PINA7 is used to adjust the duty cycle 
- *   of the PWM signal.  This is done to start and stop the motor. Button debouncing is 
- *   accomplished in software by using a 300ms delay after detecting the first pulse 
- *   before checking again. 
+ *   A push button connected to PINA7 is used to adjust the duty cycle of the PWM signal.  
+ *   This is done to start and stop the motor. Button debouncing is accomplished in software
+ *   by using a 300ms delay after detecting the first pulse before checking again. 
  *
  * MCU Details:
  *   - MCU: ATtiny861a
