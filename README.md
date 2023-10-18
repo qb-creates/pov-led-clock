@@ -1,15 +1,7 @@
 # Persistence of Vision (POV) Clock
-Created a fully functional analog style pov(persistence of vision) clock. Persistence of vision displays are generally LED displays which 'shows' images by displaying a section of an image at a given time, in quick rapid succession. The human brain perceives this as a continuous image. I accomplish this by attaching my microcontroller board and LEDs to the motor of a hard drive. A hard drive motor was used by it is a three phase motor and it is also spins fast enough to make the image look complete and not have any stutters. An IR remote was used to set the time on the clock upon power up. A PWM signal made from a 555 timer was used to drive a speed controller which controls the speed of our motor. This project was designed, built, and programmed by me.
-
-
-<!-- 
- This program will project the image of an anolog clock using the idea of POV (Persistence of Vision).
- The circuit is mounted to a 3 phase brushless motor and will project the image of the clock everytime 
- the motor completes a full rotation. An IR Detector connected to External Interrupt 0 is used to notify 
- the circuit that a full rotation of the motor has occured. This will let the circuit know that it is back 
- at its home position. A 2 second CTC timer is used to add one second to the clock on each CTC compare 
- interrupt. This interrupt will be triggered every 1 second. Two 16 channel LED drivers are used to drive
- the LEDs. Communication with the LED drivers is done using the SPI protocol. -->
+<!-- Created a fully functional analog style pov(persistence of vision) clock. Persistence of vision displays are generally LED displays which 'shows' images by displaying a section of an image at a given time, in quick rapid succession. The human brain perceives this as a continuous image. I accomplish this by attaching my microcontroller board and LEDs to the motor of a hard drive. A hard drive motor was used by it is a three phase motor and it is also spins fast enough to make the image look complete and not have any stutters. An IR remote was used to set the time on the clock upon power up. A PWM signal made from a 555 timer was used to drive a speed controller which controls the speed of our motor. This project was designed, built, and programmed by me. -->
+A propeller display that is made up of a single row of LEDs and projects an image of an analog clock. The display utilizes an ATmega32 
+microcontroller two 16-channel LED drivers, and a brushless DC motor.
 
 - Project Video (YouTube): https://www.youtube.com/watch?v=ZK3UpSKuKRA
  <div align="center">
@@ -20,7 +12,8 @@ Created a fully functional analog style pov(persistence of vision) clock. Persis
 <h2> Table of Contents</h2>
 
 - [Overview](#overview)
-- [Software](#software)
+- [Software Used](#software)
+- [Parts List](#partslist)
 - [Clock Circuit](#clockcircuit)
     - [Description](#clockdescription) <!-- Description of the circuit. Schematic. Double sided board for space-->
     - [LED Driver](#leddriver) <!-- Description of how data is transfered to led sinks -->
@@ -33,30 +26,41 @@ Created a fully functional analog style pov(persistence of vision) clock. Persis
     - [Notes](#esccircuitnotes) <!--Choose a crystal where you can get pwm frequency between 50 - 500hz. Maybe include a small capacitor for button debouncing-->
 - [Hardware](#hardware)
 - [Power Supply](#powersupply)
-- [Parts List](#partslist)
 
 
 ## Overview <a name="overview"></a>
+Persistence of vision displays are generally LED displays which 'shows' images by displaying a section of an image at a given time, in quick rapid succession. The human brain perceives this as a continuous image. I accomplish this by mounting my circuit board to brushless DC motor. A motor with high rpm was chosen so that it will spin fast enough to make the image look complete and not have any stutters. This project was designed, built, and programmed by me.
 
-## Software <a name="software"></a>
-VSCode with platform.io extension
-AVRDude to deploy
-KiCad design pcb
-AutoDesk fusion for the case
+## Software Used<a name="software"></a>
+- VSCode with platform.io extension
+- AVRDude (Deploy program to the microcontroller)
+- KiCad (PCB Design)
+- AutoDesk Fusion (Case Design)
 
 ## Parts List <a name="partslist"></a>
 
 # Clock Circuit <a name="clockcircuit"></a>
-## Description
+## Description <a name="clockdescription"></a>
+ This circuit will project the image of an anolog clock using the idea of POV (Persistence of Vision).
+ The circuit is mounted to a brushless motor and will project the image of the clock everytime the
+ motor completes a full rotation. An IR Detector connected to External Interrupt 0 is used to notify 
+ the circuit that a full rotation of the motor has occured. This will let the circuit know that it is back 
+ at its home position. A 2 second CTC timer is used to add one second to the clock on each CTC compare 
+ interrupt. This interrupt will be triggered every 1 second. Two 16 channel LED drivers are used to drive
+ the LEDs. Communication with the LED drivers is done using the SPI protocol.
 <div>
     <img src = "images/led-circuit-schematic.jpg">
 </div>
 
-## LED Driver
-## IR Receiver
-## Notes
+## LED Driver <a name="leddriver"></a>
+## IR Receiver <a name="irreceiver"></a>
+## Notes <a name="clockcircuitnotes"></a>
 
 ## ESC Driver Circuit<a name="escdriver"></a>
+This circuit produces a PWM output that is used to drive an ESC (Electronic Speed Controller).
+A push button connected to PINA7 is used to adjust the duty cycle of the PWM signal.  
+This is done to start and stop the motor. Button debouncing is accomplished in software
+by using a 300ms delay after detecting the first pulse before checking again. 
 <div>
     <img src = "images/esc-driver-circuit-schematic.JPG">
 </div>
@@ -74,7 +78,7 @@ ir transmitter -->
 <!-- power supply
 wireless power -->
 
-<h2>Images</h2>
+<!-- <h2>Images</h2>
 <div>
     <img src = "images/pov-led-clock.JPEG" width = "410" height = "500" style="padding: 0; margin: 0;">
     <img src = "images/case-inside.JPEG" width = "410" height = "500">
@@ -94,4 +98,4 @@ wireless power -->
 <h2>ESC Driver and Motor Schematic</h2>
 <div>
     <img src = "images/esc-driver-circuit-schematic.JPG">
-</div>
+</div> -->
