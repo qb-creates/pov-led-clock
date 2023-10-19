@@ -1,9 +1,11 @@
+# Persistence of Vision (POV) Clock
+
 A propeller display that is made up of a single row of LEDs and projects an image of an analog clock. The display utilizes an ATmega32 
 microcontroller two 16-channel LED drivers, and a brushless DC motor.
 
 - Project Video (YouTube): https://www.youtube.com/watch?v=ZK3UpSKuKRA
+- Persistance of Vision: https://en.wikipedia.org/wiki/Persistence_of_vision
 
-# Persistence of Vision (POV) Clock
  <div align="center">
     <!-- <img src="images/pov-led-clock-powered.png" width = "446" height = "428"> -->
     <img src="images/pov-led-clock-powered.png" width = "335" height = "321">
@@ -14,6 +16,7 @@ microcontroller two 16-channel LED drivers, and a brushless DC motor.
 - [Overview](#overview)
 - [Software Used](#software)
 - [Parts List](#partslist)
+    - [ESC Driver](#partsescdriver) <!-- Description of the circuit. Schematic. Double sided board for space-->
 - [Clock Circuit](#clockcircuit)
     - [Description](#clockdescription) <!-- Description of the circuit. Schematic. Double sided board for space-->
     - [LED Driver](#leddriver) <!-- Description of how data is transfered to led sinks -->
@@ -29,7 +32,7 @@ microcontroller two 16-channel LED drivers, and a brushless DC motor.
 
 
 ## Overview <a name="overview"></a>
-Persistence of vision displays are generally LED displays which 'shows' images by displaying a section of an image at a given time, in quick rapid succession. The human brain perceives this as a continuous image. I accomplish this by mounting my circuit board to brushless DC motor. A motor with high rpm was chosen so that it will spin fast enough to make the image look complete and not have any stutters. This project was designed, built, and programmed by me.
+Persistence of vision displays are LED displays which project images by displaying a section of an image at a given time in quick rapid succession. The human brain perceives this as a continuous image. I accomplish this by mounting my circuit board to brushless DC motor. A motor with high rpm was chosen so that it will spin fast enough to make the image look complete and not have any stutters. This project was designed, built, and programmed by me.
 
 ## Software Used<a name="software"></a>
 - <a href="https://docs.platformio.org/en/latest/what-is-platformio.html">VSCode with PlatformIO extension</a>
@@ -38,32 +41,18 @@ Persistence of vision displays are generally LED displays which 'shows' images b
 - <a href="https://www.autodesk.com/products/fusion-360/personal">AutoDesk Fusion 360 Personal (Case Design)</a> 
 
 ## Parts List <a name="partslist"></a>
-|Part |Quantity|Link|
+### ESC Driver <a name="partsescdriver"></a>
+|Part Number|Quantity|Link|
 |-----|--------|----|
-|Motor|--------|----|
+|Brushless Motor|   x1   |https://www.amazon.com/gp/product/B08CRTR7CZ/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1|
+|ESC 3A UBEC|   x1   |https://www.amazon.com/gp/product/B071GRSFBD/ref=ppx_yo_dt_b_asin_title_o03_s00?ie=UTF8&psc=1|
+|ATtiny861-20PU-ND|   x1   |https://www.digikey.com/en/products/detail/microchip-technology/ATTINY861-20PU/1245922|
+|22pF Ceramic Capacitor|   x2   |https://www.digikey.com/en/products/filter/ceramic-capacitors/60|
+|16Mhz Crystal|   x1   |https://www.digikey.com/en/products/filter/oscillators/172|
+|10K ohm resistor|   x1   |https://www.digikey.com/en/products/filter/through-hole-resistors/53|
+|330 ohm resistor|   x1   |https://www.digikey.com/en/products/filter/through-hole-resistors/53|
+|ISP Header|   x1   |https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314|
 
-|Table 1|Table 2|
-|--|--|
-|<table> 
-    <tr>
-        <th>Table 1 Heading 1</th>
-        <th>Table 1 Heading 2</th>
-    </tr>
-    <tr>
-        <td>Row 1 Column 1</td>
-        <td>Row 1 Column 2</td>
-    </tr> 
-    </table> | 
-    <table> 
-        <tr>
-            <th>Table 2 Heading 1</th>
-            <th>Table 2 Heading 2</th>
-        </tr>
-        <tr>
-            <td>Row 1 Column 1</td>
-            <td>Row 1 Column 2</td>
-        </tr> 
-    </table>|
 
 ## Clock Circuit <a name="clockcircuit"></a>
 ### Description <a name="clockdescription"></a>
