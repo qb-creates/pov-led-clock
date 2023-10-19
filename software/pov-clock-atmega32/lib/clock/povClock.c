@@ -84,10 +84,10 @@ void projectClockImage(void)
         for (int i = 0; i < 6; i++)
         {
             // Store our clock image data
-            uint8_t byte0 = clockImageData[row][i];
-            uint8_t byte1 = clockImageData[row][i + 6];
-            uint8_t byte2 = clockImageData[row][i + 12];
-            uint8_t byte3 = clockImageData[row][i + 18];
+            uint8_t byte0 = pgm_read_byte(&(clockImageData[row][i]));
+            uint8_t byte1 = pgm_read_byte(&(clockImageData[row][i + 6]));
+            uint8_t byte2 = pgm_read_byte(&(clockImageData[row][i + 12]));
+            uint8_t byte3 = pgm_read_byte(&(clockImageData[row][i + 18]));
 
             // Include the seconds outline image data if the seconds position is >= to the row position we are projecting.
             if (secondsOutlinePosition >= row)
