@@ -33,14 +33,19 @@ Persistence of vision displays are generally LED displays which 'shows' images b
 
 ## Software Used<a name="software"></a>
 - <a href="https://docs.platformio.org/en/latest/what-is-platformio.html">VSCode with PlatformIO extension</a>
-- AVRDude: https://github.com/avrdudes/avrdude
-- KiCad: https://www.kicad.org/
-- AutoDesk Fusion 360: https://www.autodesk.com/products/fusion-360/personal
+- <a href="https://github.com/avrdudes/avrdude">VRDude (Flash Uploader)</a> 
+- <a href="https://www.kicad.org/">KiCad (PCB Design)</a> 
+- <a href="https://www.autodesk.com/products/fusion-360/personal">AutoDesk Fusion 360 Personal (Case Design)</a> 
 
 ## Parts List <a name="partslist"></a>
 |Part |Quantity|Link|
 |-----|--------|----|
 |Motor|--------|----|
+
+|Table 1|Table 2|
+|--|--|
+|<table> <tr><th>Table 1 Heading 1</th><th>Table 1 Heading 2</th></tr><tr><td>Row 1 Column 1</td><td>Row 1 Column 2</td></tr> </table>| <table> <tr><th>Table 2 Heading 1</th><th>Table 2 Heading 2</th></tr><tr><td>Row 1 Column 1</td><td>Row 1 Column 2</td></tr> </table>|
+
 ## Clock Circuit <a name="clockcircuit"></a>
 ### Description <a name="clockdescription"></a>
  This circuit will project the image of an anolog clock using the idea of POV (Persistence of Vision).
