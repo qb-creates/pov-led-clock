@@ -42,16 +42,16 @@ Persistence of vision displays are LED displays which project images by displayi
 
 ## Parts List <a name="partslist"></a>
 ### ESC Driver <a name="partsescdriver"></a>
-|Part Number|Quantity|Link|
+|Part Number|Quantity|Notes|
 |-----|--------|----|
 |<a href="https://www.amazon.com/gp/product/B08CRTR7CZ/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1">Brushless Motor</a>|   x1   |sdfsdf|
-|ESC 3A UBEC|   x1   |https://www.amazon.com/gp/product/B071GRSFBD/ref=ppx_yo_dt_b_asin_title_o03_s00?ie=UTF8&psc=1|
-|ATtiny861-20PU-ND|   x1   |https://www.digikey.com/en/products/detail/microchip-technology/ATTINY861-20PU/1245922|
-|22pF Ceramic Capacitor|   x2   |https://www.digikey.com/en/products/filter/ceramic-capacitors/60|
-|16Mhz Crystal|   x1   |https://www.digikey.com/en/products/filter/oscillators/172|
-|10K ohm resistor|   x1   |https://www.digikey.com/en/products/filter/through-hole-resistors/53|
-|330 ohm resistor|   x1   |https://www.digikey.com/en/products/filter/through-hole-resistors/53|
-|ISP Header|   x1   |https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314|
+|<a href="https://www.amazon.com/gp/product/B071GRSFBD/ref=ppx_yo_dt_b_asin_title_o03_s00?ie=UTF8&psc=1">ESC 3A UBEC</a>|   x1   |sdfsdf|
+|<a href="https://www.digikey.com/en/products/detail/microchip-technology/ATTINY861-20PU/1245922">ATtiny861-20PU-ND</a>|   x1   |sdfsdfs|
+|<a href="https://www.digikey.com/en/products/filter/ceramic-capacitors/60">22pF Ceramic Capacitor</a>|   x2   |sdfsdf|
+|<a href="https://www.digikey.com/en/products/filter/oscillators/172">16Mhz Crystal</a>|   x1   |sdfsdf|
+|<a href="https://www.digikey.com/en/products/filter/through-hole-resistors/53">10K ohm resistor</a>|   x1   |sdfsdf|
+|<a href="https://www.digikey.com/en/products/filter/through-hole-resistors/53">330 ohm resistor</a>|   x1   |asdfsdf|
+|<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">ISP Header</a>|   x1   |sdfsdf|
 
 
 ## Clock Circuit <a name="clockcircuit"></a>
