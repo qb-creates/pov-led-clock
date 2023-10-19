@@ -1,13 +1,13 @@
+A propeller display that is made up of a single row of LEDs and projects an image of an analog clock. The display utilizes an ATmega32 
+microcontroller two 16-channel LED drivers, and a brushless DC motor.
+
+- Project Video (YouTube): https://www.youtube.com/watch?v=ZK3UpSKuKRA
+
 # Persistence of Vision (POV) Clock
  <div align="center">
     <!-- <img src="images/pov-led-clock-powered.png" width = "446" height = "428"> -->
     <img src="images/pov-led-clock-powered.png" width = "335" height = "321">
  </div>
-
-A propeller display that is made up of a single row of LEDs and projects an image of an analog clock. The display utilizes an ATmega32 
-microcontroller two 16-channel LED drivers, and a brushless DC motor.
-
-- Project Video (YouTube): https://www.youtube.com/watch?v=ZK3UpSKuKRA
 
 <h2> Table of Contents</h2>
 
@@ -32,13 +32,15 @@ microcontroller two 16-channel LED drivers, and a brushless DC motor.
 Persistence of vision displays are generally LED displays which 'shows' images by displaying a section of an image at a given time, in quick rapid succession. The human brain perceives this as a continuous image. I accomplish this by mounting my circuit board to brushless DC motor. A motor with high rpm was chosen so that it will spin fast enough to make the image look complete and not have any stutters. This project was designed, built, and programmed by me.
 
 ## Software Used<a name="software"></a>
-- VSCode with platform.io extension
-- AVRDude (Deploy program to the microcontroller)
-- KiCad (PCB Design)
-- AutoDesk Fusion (Case Design)
+- VSCode with PlatformIO extension: https://docs.platformio.org/en/latest/what-is-platformio.html
+- AVRDude (Deploy program to the microcontroller): https://github.com/avrdudes/avrdude
+- KiCad (PCB Design): https://www.kicad.org/
+- AutoDesk Fusion 360 (Case Design): https://www.autodesk.com/products/fusion-360/personal
 
 ## Parts List <a name="partslist"></a>
-
+|Part |Quantity|Link|
+|-----|--------|----|
+|Motor|--------|----|
 ## Clock Circuit <a name="clockcircuit"></a>
 ### Description <a name="clockdescription"></a>
  This circuit will project the image of an anolog clock using the idea of POV (Persistence of Vision).
