@@ -43,15 +43,15 @@ Persistence of vision displays are LED displays which project images by displayi
 ## Parts List <a name="partslist"></a>
 ### ESC Driver <a name="partsescdriver"></a>
 |Part Number|Quantity|Notes|
-|:-----:|:--------:|----|
+|-----|:--------:|----|
 |<a href="https://www.amazon.com/gp/product/B08CRTR7CZ/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1">Brushless Motor</a>| x1 |If you switch out the motor, you will have to make modifications to the case.|
 |<a href="https://www.amazon.com/gp/product/B071GRSFBD/ref=ppx_yo_dt_b_asin_title_o03_s00?ie=UTF8&psc=1">ESC 3A UBEC</a>| x1 |The must UBEC will be powering everything|
-|<a href="https://www.digikey.com/en/products/detail/microchip-technology/ATTINY861-20PU/1245922">ATtiny861-20PU-ND</a>| x1 |You can use any mcu as long as it supports PWM|
-|<a href="https://www.digikey.com/en/products/filter/ceramic-capacitors/60">22pF Ceramic Capacitor</a>| x2 ||
+|<a href="https://www.digikey.com/en/products/detail/microchip-technology/ATTINY861-20PU/1245922">ATtiny861-20PU</a>| x1 |You can use any mcu as long as it supports PWM|
+|<a href="https://www.digikey.com/en/products/filter/ceramic-capacitors/60">22pF Capacitor</a>| x2 ||
 |<a href="https://www.digikey.com/en/products/filter/ceramic-capacitors/60">100nF Capacitor</a>| x1 ||
 |<a href="https://www.digikey.com/en/products/filter/oscillators/172">16Mhz Crystal</a>| x1 |If you swich out the crystal, you will have to make modifications to the pwm code|
-|<a href="https://www.digikey.com/en/products/filter/through-hole-resistors/53">10K ohm resistor</a>| x1 ||
-|<a href="https://www.digikey.com/en/products/filter/through-hole-resistors/53">330 ohm resistor</a>| x1 ||
+|<a href="https://www.digikey.com/en/products/filter/through-hole-resistors/53">10K resistor</a>| x1 ||
+|<a href="https://www.digikey.com/en/products/filter/through-hole-resistors/53">330 resistor</a>| x1 ||
 |<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">IR Transmitter</a>| x1 ||
 |<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">ISP Header</a>| x1 ||
 |<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">Push Button</a>| x1 ||
