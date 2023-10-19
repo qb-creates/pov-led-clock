@@ -44,7 +44,7 @@ Persistence of vision displays are LED displays which project images by displayi
 ### ESC Driver <a name="partsescdriver"></a>
 |Part Number|Quantity|Notes|
 |-----|--------|----|
-|<a style="color: black; text-decoration: underline;text-decoration-style: dotted; href="https://www.amazon.com/gp/product/B08CRTR7CZ/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1">Brushless Motor</a>|   x1   |sdfsdf|
+|<a style="color: black; text-decoration: underline;text-decoration-style: dotted;" href="https://www.amazon.com/gp/product/B08CRTR7CZ/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1">Brushless Motor</a>|   x1   |sdfsdf|
 |<a href="https://www.amazon.com/gp/product/B071GRSFBD/ref=ppx_yo_dt_b_asin_title_o03_s00?ie=UTF8&psc=1">ESC 3A UBEC</a>|   x1   |sdfsdf|
 |<a href="https://www.digikey.com/en/products/detail/microchip-technology/ATTINY861-20PU/1245922">ATtiny861-20PU-ND</a>|   x1   |sdfsdfs|
 |<a href="https://www.digikey.com/en/products/filter/ceramic-capacitors/60">22pF Ceramic Capacitor</a>|   x2   |sdfsdf|
