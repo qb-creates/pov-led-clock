@@ -13,19 +13,19 @@ microcontroller two 16-channel LED drivers, and a brushless DC motor.
 
 <h2> Table of Contents</h2>
 
-- [Overview](#overview)
-- [Software Used](#software)
-- [Clock Circuit](#clockcircuit)
+1. [Overview](#overview)
+2. [Software Used](#software)
+3. [Clock Circuit](#clockcircuit)
     - [Description](#clockdescription) <!-- Description of the circuit. Schematic. Double sided board for space-->
     - [LED Driver](#leddriver) <!-- Description of how data is transfered to led sinks -->
     - [IR Receiver](#irreceiver) <!-- External interrupt-->
     - [Parts List](#clockpartslist) <!--Leaving out crystal because of balance. Modifying isp header  If you use crystal you will need to update FCPU and timer OCR-->
-- [ESC Driver Circuit](#escdriver)
+4. [ESC Driver Circuit](#escdriver)
     - [Description](#escdescription) <!-- Description of the circuit. Schematic image.-->
     - [PWM](#escpwm)
     - [Parts List](#escpartslist) <!--Choose a crystal where you can get pwm frequency between 50 - 500hz. Maybe include a small capacitor for button debouncing-->
-- [Hardware](#hardware)
-- [Power Supply](#powersupply)
+5. [Hardware](#hardware)
+6. [Power Supply](#powersupply)
 
 
 ## Overview <a name="overview"></a>
