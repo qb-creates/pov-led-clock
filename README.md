@@ -32,10 +32,10 @@ Persistence of vision displays are LED displays which project images by displayi
 
 
 ## Software Used<a name="software"></a>
-- <a href="https://docs.platformio.org/en/latest/what-is-platformio.html">VSCode with PlatformIO extension</a>
-- <a href="https://github.com/avrdudes/avrdude">VRDude (Flash Uploader)</a> 
-- <a href="https://www.kicad.org/">KiCad (PCB Design)</a> 
-- <a href="https://www.autodesk.com/products/fusion-360/personal">AutoDesk Fusion 360 Personal (Case Design)</a> 
+- VSCode with PlatformIO extension: https://docs.platformio.org/en/latest/what-is-platformio.html
+- VRDude (Flash Uploader): https://github.com/avrdudes/avrdude
+- KiCad (PCB Design): https://www.kicad.org
+- AutoDesk Fusion 360 Personal (Case Design): https://www.autodesk.com/products/fusion-360/personal
 
 
 ## Clock Circuit <a name="clockcircuit"></a>
@@ -59,15 +59,15 @@ Persistence of vision displays are LED displays which project images by displayi
 |<a href="https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA32A-AU?qs=6WoM%2FY8vMbbFYDtovr%252BQ5Q%3D%3D">ATmega32A-AU</a>| x1 |You can use any mcu as long as it supports PWM|
 |<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">ISP Header</a>| x1 ||
 |<a href="https://www.digikey.com/en/products/detail/jst-sales-america-inc/S2B-PH-SM4-TB/926655?s=N4IgTCBcDaICwFYEFoCMB2OBONyByAIiALoC%2BQA">JST Connector</a>| x1 ||
-|<a href="https://www.digikey.com/en/products/filter/ceramic-capacitors/60">22pF Capacitor</a>| x2 ||
-|<a href="https://www.digikey.com/en/products/filter/ceramic-capacitors/60">100nF Capacitor</a>| x1 ||
-|<a href="https://www.digikey.com/en/products/filter/oscillators/172">16Mhz Crystal</a>| x1 |If you use a crystal with a different frequency, you will have to make modifications to the pwm code|
-|<a href="https://www.digikey.com/en/products/filter/through-hole-resistors/53">10K Resistor</a>| x2 ||
-|<a href="https://www.digikey.com/en/products/filter/through-hole-resistors/53">7.32K Resistor</a>| x2 ||
-|<a href="https://www.sparkfun.com/products/19018">Infrared Detector</a>| x1 ||
-|<a href="https://www.digikey.com/en/products/filter/diodes/rectifiers/single-diodes/280">1n4148 Diode</a>| x1 ||
 |<a href="https://www.digikey.com/en/products/detail/stmicroelectronics/STP16CPC05MTR/2021162">STP16CPC05MTR LED Driver</a>| x2 ||
 |<a href="https://www.digikey.com/en/products/filter/led-indication-discrete/105">SMD Led 1205 (3216 Metric)</a>| x32 ||
+|<a href="https://www.digikey.com/en/products/filter/oscillators/172">16Mhz Crystal</a>| x1 |If you use a crystal with a different frequency, you will have to make modifications to the pwm code|
+|<a href="https://www.digikey.com/en/products/filter/ceramic-capacitors/60">22pF Capacitor</a>| x2 ||
+|<a href="https://www.digikey.com/en/products/filter/ceramic-capacitors/60">100nF Capacitor</a>| x1 ||
+|<a href="https://www.digikey.com/en/products/filter/through-hole-resistors/53">10K Resistor</a>| x2 ||
+|<a href="https://www.digikey.com/en/products/filter/through-hole-resistors/53">7.32K Resistor</a>| x2 ||
+|<a href="https://www.digikey.com/en/products/filter/diodes/rectifiers/single-diodes/280">1n4148 Diode</a>| x1 ||
+|<a href="https://www.sparkfun.com/products/19018">Infrared Detector</a>| x1 ||
 
 
 ## ESC Driver Circuit<a name="escdriver"></a>
