@@ -28,18 +28,18 @@ microcontroller two 16-channel LED drivers, and a brushless DC motor.
 6. [Power Supply](#powersupply)
 
 
-## Overview <a name="overview"></a>
+## 1. Overview <a name="overview"></a>
 Persistence of vision displays are LED displays which project images by displaying a section of an image at a given time in quick rapid succession. The human brain perceives this as a continuous image. I accomplish this by mounting my circuit board to brushless DC motor. A motor with high rpm was chosen so that it will spin fast enough to make the image look complete and not have any stutters. This project was designed, built, and programmed by me.
 
 
-## Software Used<a name="software"></a>
+## 2. Software Used<a name="software"></a>
 - VSCode with PlatformIO extension: https://docs.platformio.org/en/latest/what-is-platformio.html
 - VRDude (Flash Uploader): https://github.com/avrdudes/avrdude
 - KiCad (PCB Design): https://www.kicad.org
 - AutoDesk Fusion 360 Personal (Case Design): https://www.autodesk.com/products/fusion-360/personal
 
 
-## Clock Circuit <a name="clockcircuit"></a>
+## 3. Clock Circuit <a name="clockcircuit"></a>
 ### Description <a name="clockdescription"></a>
  This circuit will project the image of an anolog clock using the idea of POV (Persistence of Vision).
  The circuit is mounted to a brushless motor and will project the image of the clock everytime the
@@ -71,7 +71,7 @@ Persistence of vision displays are LED displays which project images by displayi
 |<a href="https://www.sparkfun.com/products/19018">Infrared Detector</a>| x1 |
 
 
-## ESC Driver Circuit<a name="escdriver"></a>
+## 4. ESC Driver Circuit<a name="escdriver"></a>
 ### Description<a name="escdescription"></a>
 This circuit produces a PWM output that is used to drive an ESC (Electronic Speed Controller).
 A push button connected to PINA7 is used to adjust the duty cycle of the PWM signal.  
@@ -98,7 +98,7 @@ by using a 300ms delay after detecting the first pulse before checking again.
 |<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">Push Button</a>| x1 |
 |<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">Pcb Board 4cm x 6cm</a>| x1 |
 
-## Hardware <a name="hardware"></a>
+## 5. Hardware <a name="hardware"></a>
 |Part Number|Quantity|
 |-----|:--------:|
 |<a href="https://www.amazon.com/gp/product/B08CRTR7CZ/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1">Brushless Motor</a>| x1 |
@@ -108,7 +108,7 @@ by using a 300ms delay after detecting the first pulse before checking again.
 |<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">9V 1A Power Supply</a>| x1 |
 |<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">5V 200mA Wireless power </a>| x1 |
 
-## Power Supply <a name="powersupply"></a>
+## 6. Power Supply <a name="powersupply"></a>
 
 
 
