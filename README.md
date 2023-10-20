@@ -54,6 +54,7 @@ Persistence of vision displays are LED displays which project images by displayi
 ### LED Driver <a name="leddriver"></a>
 ### IR Receiver <a name="irreceiver"></a>
 ### Parts List <a name="clockcircuitnotes"></a>
+<center>
 |Part Number|Quantity|
 |-----|:--------:|
 |<a href="https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA32A-AU?qs=6WoM%2FY8vMbbFYDtovr%252BQ5Q%3D%3D">ATmega32A-AU</a>| x1 |
@@ -68,7 +69,7 @@ Persistence of vision displays are LED displays which project images by displayi
 |<a href="https://www.digikey.com/en/products/filter/through-hole-resistors/53">7.32K Resistor</a>| x2 |
 |<a href="https://www.digikey.com/en/products/filter/diodes/rectifiers/single-diodes/280">1n4148 Diode</a>| x1 |
 |<a href="https://www.sparkfun.com/products/19018">Infrared Detector</a>| x1 |
-
+</center>
 
 ## ESC Driver Circuit<a name="escdriver"></a>
 ### Description<a name="escdescription"></a>
