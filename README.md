@@ -1,7 +1,6 @@
 # Persistence of Vision (POV) Clock
 
-A propeller display that is made up of a single row of LEDs and projects an image of an analog clock. The display utilizes an ATmega32 
-microcontroller two 16-channel LED drivers, and a brushless DC motor.
+A propeller display that projects an image of an analog clock using a single row of LEDs. The display utilizes an ATmega32 microcontroller two 16-channel LED drivers, and a brushless DC motor.
 
 - Project Video (YouTube): https://www.youtube.com/watch?v=ZK3UpSKuKRA
 - Persistance of Vision: https://en.wikipedia.org/wiki/Persistence_of_vision
@@ -14,40 +13,35 @@ microcontroller two 16-channel LED drivers, and a brushless DC motor.
 
 <h2> Table of Contents</h2>
 
-1. [Overview](#overview)
-2. [Software Used](#software)
-3. [ESC Driver Circuit](#escdriver)
+1. [Software Used](#software)
+2. [ESC Driver Circuit](#escdriver)
     - [PWM Overview](#escpwm)
     - [Parts List](#escpartslist) 
-4. [Clock Circuit](#clockcircuit)
+3. [Clock Circuit](#clockcircuit)
     - [LED Driver](#leddriver)
     - [Timer Overview](#clocktimer) 
     - [Parts List](#clockpartslist) 
-5. [Power Supply](#powersupply)
-6. [Schematics](#schematics)
+4. [Power Supply](#powersupply)
+5. [Schematics](#schematics)
     - [ESC Driver Schematic](#clockschematic)
     - [Clock Schematic](#clockschematic)
-7. [STL Viewer](#stlviewer)
+6. [STL Viewer](#stlviewer)
     - [Case Base](#casebase)
     - [Case Top](#casetop)
 
-
-## 1. Overview <a name="overview"></a>
-Persistence of vision displays are LED displays which project images by displaying a section of an image at a given time in quick rapid succession. The human brain perceives this as a continuous image. I accomplish this by mounting my circuit board to brushless DC motor. A motor with high rpm was chosen so that it will spin fast enough to make the image look complete and not have any stutters. This project was designed, built, and programmed by me.
-
-
-## 2. Software Used<a name="software"></a>
+## 1. Software Used<a name="software"></a>
 - VSCode with PlatformIO extension: https://docs.platformio.org/en/latest/what-is-platformio.html
-- VRDude (Flash Uploader): https://github.com/avrdudes/avrdude
+- AVRDUDE (Flash Uploader): https://github.com/avrdudes/avrdude
 - KiCad (PCB Design): https://www.kicad.org
 - AutoDesk Fusion 360 Personal (Case Design): https://www.autodesk.com/products/fusion-360/personal
 
-## 3. ESC Driver Circuit<a name="escdriver"></a>
+## 2. ESC Driver Circuit<a name="escdriver"></a>
 The ATtiny861 produces a PWM output that is used to drive the ESC (Electronic Speed Controller). A push button connected to PINA7 is used to adjust the duty cycle of the PWM signal.
-By adjusting the duty cycle of the PWM signal to a value where the time high is less than 1ms we can stop the motor. We can press the button once to start the motor, then press it
-again to stop it. Button debouncing is accomplished in software by using a 300ms delay after detecting the first pulse before checking again. The IR transmitter is used to notify
-the clock circuit that it has made it rotated back to it's starting position. The inductive transmitter will be mounted to the case while the receiver is mounted to the motor and connected
-to the clock circuit. The ESC's UBEC will supply the ATtiny, IR transmitter, and inductive transmitter with power (5V 3A).
+By adjusting the duty cycle of the PWM signal to a percentage where the output is high for 1ms or less, the motor can be stopped. The push button can be pressed once to start the motor. It can be pressed
+again to stop the motor. Button debouncing is accomplished in software by using a 300ms delay after detecting the first low output on the pin. The IR transmitter is used to notify
+the clock circuit that it has rotated back to it's starting position. The clock circuit will start projecting the image again after it has rotated back to it's starting position. 
+The inductive transmitter is  be mounted to the case while the receiver is mounted to the motor. It is connected to the clock circuit. The ESC's UBEC supplies the ATtiny, IR transmitter, 
+and inductive transmitter with power (5V 3A).
 <div align="center">
  <div>
     <img src = "images/attiny-circuit-front.JPEG" width = "206" height = "275" style="padding: 0; margin: 0;">
@@ -58,8 +52,8 @@ to the clock circuit. The ESC's UBEC will supply the ATtiny, IR transmitter, and
 
 ### PWM Overview<a name="escpwm"></a>
 I wanted the PWM frequency to be as close to 500Hz as possible. The time high for a 100% duty cycle would be 2ms. Usually a 1ms pulse translates to 0% throttle and a 2ms pulse translates to 100% throttle. 
-The duty cycle of the PWM signal can be adjusted by setting Timer1's OCR1B register to a value between 0 and 255. I was able to use every value between 128 and 255 for OCR1B without exceeding 2ms. 
-This gave me more wiggle when setting the speed of the motor instead of going from 0% throttle to 100% immediately. 
+The duty cycle of the PWM signal can be adjusted by setting Timer1's OCRnB register to a value between 0 and 255. I was able to use every value between 128 and 255 for OCRnB without exceeding 2ms. 
+This gave me more wiggle when setting the speed of the motor instead of going from 0% throttle to 100% immediately. Calculation to find the neccessary prescaler value is show below.
 
 PWM Frequency Equation for ATtiny861
 - PWM Frequency = fck / (prescaler * 255)
@@ -98,14 +92,13 @@ Solve for Actual PWM Frequency
 |<a href="https://www.amazon.com/Adapter-Regulated-Switching-Interchangeable-Equipment/dp/B0BFPXZ7S1/ref=sr_1_3_sspa?crid=396GU23EXCZA8&keywords=9v+power+supply&qid=1697854150&sprefix=9v+power%2Caps%2C93&sr=8-3-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1">9V 1A Power Supply</a>| x1 |
 |<a href="https://www.adafruit.com/product/1407">5V 200mA Inductive Charging Set </a>| x1 |
 
-## 4. Clock Circuit <a name="clockcircuit"></a>
- This circuit will project the image of an anolog clock using the idea of POV (Persistence of Vision).
+## 3. Clock Circuit <a name="clockcircuit"></a>
+ This circuit projects the image of an anolog clock using of Persistence of Vision.
  The circuit is mounted to a brushless motor and will project the image of the clock everytime the
  motor completes a full rotation. An IR Detector connected to External Interrupt 0 is used to notify 
- the circuit that a full rotation of the motor has occured. This will let the circuit know that it is back 
- at its home position. A 2 second CTC timer is used to add one second to the clock on each CTC compare 
- interrupt. This interrupt will be triggered every 1 second. Two 16 channel LED drivers are used to drive
- the LEDs. Communication with the LED drivers is done using the SPI protocol.
+ the circuit that a full rotation of the motor has occured and that it is back at it's starting position. 
+ A 2 second CTC timer is used to add one second to the clock on each CTC compare interrupt. This interrupt is 
+ triggered every 1 second. Two 16 channel LED drivers are used to drive the LEDs. Communication with the LED drivers is done using the SPI protocol.
 <div align="center">
     <img src = "images/led-circuit-front.JPEG" width = "206" height = "275" style="padding: 0; margin: 0;">
     <img src = "images/led-circuit-back.JPEG" width = "206" height = "275" style="padding: 0; margin: 0;">
@@ -113,7 +106,7 @@ Solve for Actual PWM Frequency
 </div>
 
 ### LED Drivers <a name="leddriver"></a>
-The LED Drivers are chained together. Each driver must receive two bytes of data to control their 16 output channels. Four bytes of data must be sent to the first driver in order to control all 32 output channels. The LEDs are mounted in order starting from the center of the PCB with LED 1 and ending at the opposite end with LED 32. The table below shows which output channel each LED is connected to. 
+The LED Drivers are chained together. Each driver must receive two bytes of data to control their 16 output channels. Four bytes of data must be sent to the first driver in order to control all 32 output channels. The LEDs are mounted in order (starting from the center of the PCB) from 1 to 32. The table below shows which output channel each LED is connected to. 
 
 |_**STP16CPC05 1 Outputs**_|LED Number|--|_**STP16CPC05 2 Outputs**_|LED Number|
 |:--:|:--:|:--:|:--:|:--:|
@@ -145,8 +138,8 @@ Because the LED Drivers are daisy chained together, the data must be transmitted
 ---
 ### Timer Overview <a name="clocktimer"></a>
 A one second timer is configured to update the seconds hand of the clock. The timer is configured to operate in Clear Timer on Compare Match Mode (CTC). A CTC frequency of 0.5 Hz (2s) is required. 
-This will trigger the compare match interrupt every second.Because the weight of the crystal caused the ciruit to not be completely balanced, it was discarded and the ATmega32's internal 8 Mhz 
-oscillator was used instead. Calculations to find the appropriate OCRn values are listed below.
+This will trigger the compare match interrupt every second. Because the weight of the crystal caused the ciruit to be unbalanced, it was discarded and the ATmega32's internal 8 Mhz 
+oscillator is used instead. Calculation to find the appropriate OCRn values is shown below.
 
 CTC Waveform Frequency Equation
 - Frequency = fck / (2 * prescaler * (1 + OCRnA)).
@@ -180,8 +173,8 @@ Solve for OCRnA
 |<a href="https://www.digikey.com/en/products/filter/diodes/rectifiers/single-diodes/280">1n4148 Diode</a>| x1 |
 |<a href="https://www.sparkfun.com/products/19018">Infrared Detector</a>| x1 |
 
-## 5. Power Supply <a name="powersupply"></a>
-## 6. Schematics <a name="schematics"></a>
+## 4. Power Supply <a name="powersupply"></a>
+## 5. Schematics <a name="schematics"></a>
 ### ESC Driver Schematic<a name="escschematic"></a>
 <div>
     <img src = "images/esc-driver-circuit-schematic.JPG">
@@ -193,7 +186,7 @@ Solve for OCRnA
     <img src = "images/led-circuit-schematic.jpg">
 </div>
 
-## 7. STL Viewer <a name="stlviewer"></a>
+## 6. STL Viewer <a name="stlviewer"></a>
 ### Case Base <a name="casebase"></a>
 ```stl
 solid ASCII
