@@ -186,7 +186,7 @@ Solve for OCRnA
 <div>
     <img src = "images/esc-driver-circuit-schematic.JPG">
 </div>
-
+---
 ### Clock Schematic<a name="clockschematic"></a>
 <div>
     <img src = "images/led-circuit-schematic.jpg">
