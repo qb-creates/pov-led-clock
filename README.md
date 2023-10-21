@@ -21,8 +21,7 @@ microcontroller two 16-channel LED drivers, and a brushless DC motor.
     - [Parts List](#escpartslist) <!--Choose a crystal where you can get pwm frequency between 50 - 500hz. Maybe include a small capacitor for button debouncing-->
 4. [Clock Circuit](#clockcircuit)
     - [LED Driver](#leddriver) <!-- Description of how data is transfered to led sinks -->
-    - [IR Receiver](#irreceiver) <!-- External interrupt-->
-    - [Timer](#clocktimer) <!-- External interrupt-->
+    - [Timer Overview](#clocktimer) <!-- External interrupt-->
     - [Parts List](#clockpartslist) <!--Leaving out crystal because of balance. Modifying isp header  If you use crystal you will need to update FCPU and timer OCR-->
 5. [Hardware](#hardware)
 6. [Power Supply](#powersupply)
@@ -111,9 +110,32 @@ Solve for Actual PWM Frequency
     <img src = "images/pov-led-clock.JPEG" width = "357" height = "275" style="padding: 0; margin: 0;">
 </div>
 
-### LED Driver <a name="leddriver"></a>
-### IR Receiver <a name="irreceiver"></a>
-### Timer <a name="clocktimer"></a>
+### LED Drivers <a name="leddriver"></a>
+The LED Drivers are chained together. Each driver must receive two bytes of data to control their 16 output channels. Four bytes of data must be sent to the first driver in order to control all 32 output channels.
+
+|STP16CPC05 1|||STP16CPC05 2||
+|:--:|:--:|:--:|:--:|:--:|
+|Byte 1|Led|--|Byte 3|Led|
+|Out0|LED1|--|Out0|LED17|
+|Out1|LED2|--|Out1|LED18|
+|Out2|LED3|--|Out2|LED19|
+|Out3|LED4|--|Out3|LED20|
+|Out4|LED5|--|Out4|LED21|
+|Out5|LED6|--|Out5|LED22|
+|Out6|LED7|--|Out6|LED23|
+|Out7|LED8|--|Out7|LED24|
+|------------|------------|--|------------|------------|
+|Byte 2|Led|--|Byte 4|Led|
+|Out8|LED16|--|Out8|LED32|
+|Out9|LED15|--|Out9|LED31|
+|Out10|LED14|--|Out10|LED30|
+|Out11|LED13|--|Out11|LED29|
+|Out12|LED12|--|Out12|LED28|
+|Out13|LED11|--|Out13|LED27|
+|Out14|LED10|--|Out14|LED26|
+|Out15|LED9|--|Out15|LED25|
+
+### Timer Overview <a name="clocktimer"></a>
 A one second timer is configured to update the seconds hand of the clock. The timer is configured to operate in Clear Timer on Compare Match Mode (CTC). A CTC frequency of 0.5 Hz (2s) is required. 
 This will trigger the compare match interrupt every second.Because the weight of the crystal caused the ciruit to not be completely balanced, it was discarded and the ATmega32's internal 8 Mhz 
 oscillator was used instead. Calculations to find the appropriate OCRn values are listed below.
