@@ -23,7 +23,7 @@ A propeller display that projects an image of an analog clock using a single row
     - [Parts List](#clockpartslist) 
 4. [Power Consumption](#powerconsumption)
 5. [Schematics](#schematics)
-    - [ESC Driver Schematic](#clockschematic)
+    - [ESC Driver Schematic](#escschematic)
     - [Clock Schematic](#clockschematic)
 6. [STL Viewer](#stlviewer)
     - [Case Base](#casebase)
