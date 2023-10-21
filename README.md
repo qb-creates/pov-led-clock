@@ -26,6 +26,9 @@ microcontroller two 16-channel LED drivers, and a brushless DC motor.
     - [Parts List](#clockpartslist) <!--Leaving out crystal because of balance. Modifying isp header  If you use crystal you will need to update FCPU and timer OCR-->
 5. [Hardware](#hardware)
 6. [Power Supply](#powersupply)
+7. [Schematics](#schematics)
+    - [ESC Driver Schematic](#clockschematic)
+    - [Clock Schematic](#clockschematic)
 
 
 ## 1. Overview <a name="overview"></a>
@@ -45,14 +48,24 @@ By adjusting the duty cycle of the PWM signal to a value where the time high is 
 again to stop it. Button debouncing is accomplished in software by using a 300ms delay after detecting the first pulse before checking again. The IR transmitter is used to notify
 the clock circuit that it has made it rotated back to it's starting position. The inductive transmitter will be mounted to the case while the receiver is mounted to the motor and connected
 to the clock circuit. The ESC's UBEC will supply the ATtiny, IR transmitter, and inductive transmitter with power (5V 3A).
-<div>
+<!--<div>
     <img src = "images/esc-driver-circuit-schematic.JPG">
+</div>-->
+<div align="center">
+ <div style="float:left;">
+     <img src = "images/attiny-circuit-front.JPEG" width = "304" height = "405" style="padding: 0; margin: 0;">
+     <img src = "images/attiny-circuit-back.JPEG" width = "304" height = "405" style="padding: 0; margin: 0;">
+ </div>
+ <div style="float:left;"> 
+    <img src = "images/case-inside.JPEG" width = "410" height = "500">
+ </div>
 </div>
+
 
 ### PWM Overview<a name="escpwm"></a>
 I wanted the PWM frequency to be as close to 500Hz as possible. The time high for a 100% duty cycle would be 2ms. Usually a 1ms pulse translates to 0% throttle and a 2ms pulse translates to 100% throttle. 
-The duty cycle of the PWM signal can be adjusted by setting Timer1's OCR1B register to a value between 0 and 255. I was able to use every between 128 and 255 for OCR1B without exceeding 2ms. 
-This gave me more wiggle when setting the speed of the motor instead of going from 0% throttle to 100% immediately. Duty Cycle would be equal to (OCR1B / 255) * 100.
+The duty cycle of the PWM signal can be adjusted by setting Timer1's OCR1B register to a value between 0 and 255. I was able to use every value between 128 and 255 for OCR1B without exceeding 2ms. 
+This gave me more wiggle when setting the speed of the motor instead of going from 0% throttle to 100% immediately. 
 
 PWM Frequency Equation for ATtiny861
 - PWM Frequency = fck / (prescaler * 255)
@@ -70,7 +83,7 @@ Solve for prescaler
 Solve for Actual PWM Frequency
 - Actual PWM Frequency = 16000000 Mhz / (128 * 255)
 - Actual PWM Frequency = 490 Hz
-       
+
 ### Parts List<a name="escpartslist"></a>
 |Part Number|Quantity|
 |-----|:--------:|
@@ -100,9 +113,7 @@ Solve for Actual PWM Frequency
  at its home position. A 2 second CTC timer is used to add one second to the clock on each CTC compare 
  interrupt. This interrupt will be triggered every 1 second. Two 16 channel LED drivers are used to drive
  the LEDs. Communication with the LED drivers is done using the SPI protocol.
-<div>
-    <img src = "images/led-circuit-schematic.jpg">
-</div>
+
 
 ### LED Driver <a name="leddriver"></a>
 ### IR Receiver <a name="irreceiver"></a>
@@ -126,8 +137,16 @@ Solve for Actual PWM Frequency
 
 
 ## 6. Power Supply <a name="powersupply"></a>
+## 7. Schematics <a name="schematics"></a>
+### ESC Driver Schematic<a name="escschematic"></a>
+<div>
+    <img src = "images/esc-driver-circuit-schematic.JPG">
+</div>
 
-
+### Clock Schematic<a name="clockschematic"></a>
+<div>
+    <img src = "images/led-circuit-schematic.jpg">
+</div>
 
 
 
