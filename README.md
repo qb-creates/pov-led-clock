@@ -75,7 +75,7 @@ Solve for prescaler
 Solve for Actual PWM Frequency
 - Actual PWM Frequency = 16 Mhz / (128 * 255)
 - Actual PWM Frequency = 490 Hz
-
+---
 ### Parts List<a name="escpartslist"></a>
 |Part Number|Quantity|
 |-----|:--------:|
@@ -140,7 +140,7 @@ Because the LED Drivers are daisy chained together, the data must be transmitted
 * Byte2 (LSB transmitted first) 
 * Byte1 (MSB transmitted first) 
 * Byte0 (LSB transmitted first) 
-
+---
 ### Timer Overview <a name="clocktimer"></a>
 A one second timer is configured to update the seconds hand of the clock. The timer is configured to operate in Clear Timer on Compare Match Mode (CTC). A CTC frequency of 0.5 Hz (2s) is required. 
 This will trigger the compare match interrupt every second.Because the weight of the crystal caused the ciruit to not be completely balanced, it was discarded and the ATmega32's internal 8 Mhz 
@@ -161,7 +161,7 @@ Rearranged formula to solve for OCRnA:
 Solve for OCRnA
 - OCR1A = (8 Mhz / (2 * 256 * 0.5Hz)) - 1 
 - OCR1A = 31249
-  
+---
 ### Parts List <a name="clockpartslist"></a>
 |Part Number|Quantity|
 |-----|:--------:|
