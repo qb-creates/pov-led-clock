@@ -74,7 +74,7 @@ Solve for Actual PWM Frequency
 ---
 ### Parts List<a name="escpartslist"></a>
 |_**Part Number**_|_**Quantity**_|
-|-----|:--------:|
+|:-----|:--------:|
 |<a href="https://www.digikey.com/en/products/detail/microchip-technology/ATTINY861-20PU/1245922">ATtiny861-20PU</a>| x1 |
 |<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">ISP Header</a>| x1 |
 |<a href="https://www.digikey.com/en/products/filter/ceramic-capacitors/60">22pF Capacitor</a>| x2 |
@@ -159,7 +159,7 @@ Solve for OCRnA
 ---
 ### Parts List <a name="clockpartslist"></a>
 |_**Part Number**_|_**Quantity**_|
-|-----|:--------:|
+|:-----|:--------:|
 |<a href="https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA32A-AU?qs=6WoM%2FY8vMbbFYDtovr%252BQ5Q%3D%3D">ATmega32A-AU</a>| x1 |
 |<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">ISP Header</a>| x1 |
 |<a href="https://www.digikey.com/en/products/detail/jst-sales-america-inc/S2B-PH-SM4-TB/926655?s=N4IgTCBcDaICwFYEFoCMB2OBONyByAIiALoC%2BQA">JST Connector</a>| x1 |
