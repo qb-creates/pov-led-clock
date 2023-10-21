@@ -109,7 +109,7 @@ Solve for Actual PWM Frequency
 <div align="center">
     <img src = "images/led-circuit-front.JPEG" width = "206" height = "275" style="padding: 0; margin: 0;">
     <img src = "images/led-circuit-back.JPEG" width = "206" height = "275" style="padding: 0; margin: 0;">
-    <img src = "images/pov-led-clock.JPEG" width = "357" height = "275" style="padding: 0; margin: 0;">
+    <img src = "images/pov-led-clock2.JPEG" width = "357" height = "275" style="padding: 0; margin: 0;">
 </div>
 
 ### LED Drivers <a name="leddriver"></a>
