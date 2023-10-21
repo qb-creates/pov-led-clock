@@ -111,11 +111,11 @@ Solve for Actual PWM Frequency
 </div>
 
 ### LED Drivers <a name="leddriver"></a>
-The LED Drivers are chained together. Each driver must receive two bytes of data to control their 16 output channels. Four bytes of data must be sent to the first driver in order to control all 32 output channels.
+The LED Drivers are chained together. Each driver must receive two bytes of data to control their 16 output channels. Four bytes of data must be sent to the first driver in order to control all 32 output channels. The LEDs are mounted in order starting from the center of the PCB with LED 1 and ending at the opposite end with LED 32. The table below shows which output channel each LED is connected to. 
 
-|STP16CPC05 1|||STP16CPC05 2||
+|STP16CPC05 1||--|STP16CPC05 2||
 |:--:|:--:|:--:|:--:|:--:|
-|Byte 1|Led|--|Byte 3|Led|
+|Byte 0||--|Byte 2||
 |Out0|LED1|--|Out0|LED17|
 |Out1|LED2|--|Out1|LED18|
 |Out2|LED3|--|Out2|LED19|
@@ -125,7 +125,7 @@ The LED Drivers are chained together. Each driver must receive two bytes of data
 |Out6|LED7|--|Out6|LED23|
 |Out7|LED8|--|Out7|LED24|
 |------------|------------|--|------------|------------|
-|Byte 2|Led|--|Byte 4|Led|
+|Byte 1||--|Byte 3||
 |Out8|LED16|--|Out8|LED32|
 |Out9|LED15|--|Out9|LED31|
 |Out10|LED14|--|Out10|LED30|
@@ -134,6 +134,12 @@ The LED Drivers are chained together. Each driver must receive two bytes of data
 |Out13|LED11|--|Out13|LED27|
 |Out14|LED10|--|Out14|LED26|
 |Out15|LED9|--|Out15|LED25|
+
+Because the LED Drivers are daisy chained together, the data must be transmitted in the following order.
+* Byte3 (MSB transmited first) 
+* Byte2 (LSB transmited first) 
+* Byte1 (MSB transmited first) 
+* Byte0 (LSB transmited first) 
 
 ### Timer Overview <a name="clocktimer"></a>
 A one second timer is configured to update the seconds hand of the clock. The timer is configured to operate in Clear Timer on Compare Match Mode (CTC). A CTC frequency of 0.5 Hz (2s) is required. 
