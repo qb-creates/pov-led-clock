@@ -73,7 +73,7 @@ Solve for Actual PWM Frequency
 - Actual PWM Frequency = 490 Hz
 ---
 ### Parts List<a name="escpartslist"></a>
-|Part Number|Quantity|
+|_**Part Number**_|_**Quantity**_|
 |-----|:--------:|
 |<a href="https://www.digikey.com/en/products/detail/microchip-technology/ATTINY861-20PU/1245922">ATtiny861-20PU</a>| x1 |
 |<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">ISP Header</a>| x1 |
@@ -148,17 +148,17 @@ Variables
 - Frequency = 0.5Hz = 2 seconds
 - fck = 8 Mhz
 - prescaler = 256
-- OCR1A = ?
+- OCRnA = ?
 
 Rearranged formula to solve for OCRnA:
-- OCR1A = (fck / (2 * prescaler * Frequency)) - 1
+- OCRnA = (fck / (2 * prescaler * Frequency)) - 1
 
 Solve for OCRnA
-- OCR1A = (8 Mhz / (2 * 256 * 0.5Hz)) - 1 
-- OCR1A = 31249
+- OCRnA = (8 Mhz / (2 * 256 * 0.5Hz)) - 1 
+- OCRnA = 31249
 ---
 ### Parts List <a name="clockpartslist"></a>
-|Part Number|Quantity|
+|_**Part Number**_|_**Quantity**_|
 |-----|:--------:|
 |<a href="https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA32A-AU?qs=6WoM%2FY8vMbbFYDtovr%252BQ5Q%3D%3D">ATmega32A-AU</a>| x1 |
 |<a href="https://www.digikey.com/en/products/filter/rectangular-connectors/headers-male-pins/314">ISP Header</a>| x1 |
@@ -173,7 +173,16 @@ Solve for OCRnA
 |<a href="https://www.digikey.com/en/products/filter/diodes/rectifiers/single-diodes/280">1n4148 Diode</a>| x1 |
 |<a href="https://www.sparkfun.com/products/19018">Infrared Detector</a>| x1 |
 
-## 4. Power Supply <a name="powersupply"></a>
+## 4. Power Consumption <a name="powersupply"></a>
+|_**Test Condition**_|_**Power Consumption**_|
+|:--|:--:|
+|Clock circuit with all LEDs powered on. LEDs are supplied with 3mA each.|120mA|
+|Motor running with the weight of the clock circuit|150mA|
+|Inductive charging set|100mA|
+|Motor running with all LEDs powered on|380mA|
+
+The ESC's UBEC must be able to supply at least 380mA to supply enough power to all of the components.
+
 ## 5. Schematics <a name="schematics"></a>
 ### ESC Driver Schematic<a name="escschematic"></a>
 <div>
