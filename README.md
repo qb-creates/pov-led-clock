@@ -52,7 +52,7 @@ and inductive transmitter with power (5V 3A).
 
 ### PWM Overview<a name="escpwm"></a>
 The PWM frequency is configured to be 500 Hz. The time high for a 100% duty cycle will be 2ms. Usually a 1ms pulse translates to 0% throttle and a 2ms pulse translates to 100% throttle. 
-The duty cycle of the PWM signal can be adjusted by setting tge Timer's OCRn register to a value between 0 and 255. Every value between 128 and 255 can be used for OCRnB without exceeding 2ms. This allows more wiggle when setting the speed of the motor instead of going from 0% throttle to 100% immediately. Calculation to find the neccessary prescaler value is shown below.
+The duty cycle of the PWM signal can be adjusted by setting the Timer's OCRn register to a value between 0 and 255. Every value between 128 and 255 can be used for OCRnB without exceeding 2ms. This allows more wiggle when setting the speed of the motor instead of going from 0% throttle to 100% immediately. Calculation to find the neccessary prescaler value is shown below.
 
 PWM Frequency Equation for ATtiny861
 - PWM Frequency = fck / (prescaler * 255)
