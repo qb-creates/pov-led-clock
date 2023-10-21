@@ -17,11 +17,9 @@ microcontroller two 16-channel LED drivers, and a brushless DC motor.
 1. [Overview](#overview)
 2. [Software Used](#software)
 3. [ESC Driver Circuit](#escdriver)
-    - [Description](#escdescription) <!-- Description of the circuit. Schematic image.-->
     - [PWM Overview](#escpwm)
     - [Parts List](#escpartslist) <!--Choose a crystal where you can get pwm frequency between 50 - 500hz. Maybe include a small capacitor for button debouncing-->
 4. [Clock Circuit](#clockcircuit)
-    - [Description](#clockdescription) <!-- Description of the circuit. Schematic. Double sided board for space-->
     - [LED Driver](#leddriver) <!-- Description of how data is transfered to led sinks -->
     - [IR Receiver](#irreceiver) <!-- External interrupt-->
     - [Parts List](#clockpartslist) <!--Leaving out crystal because of balance. Modifying isp header  If you use crystal you will need to update FCPU and timer OCR-->
@@ -43,7 +41,6 @@ Persistence of vision displays are LED displays which project images by displayi
 - AutoDesk Fusion 360 Personal (Case Design): https://www.autodesk.com/products/fusion-360/personal
 
 ## 3. ESC Driver Circuit<a name="escdriver"></a>
-### Description<a name="escdescription"></a>
 The ATtiny861 produces a PWM output that is used to drive the ESC (Electronic Speed Controller). A push button connected to PINA7 is used to adjust the duty cycle of the PWM signal.
 By adjusting the duty cycle of the PWM signal to a value where the time high is less than 1ms we can stop the motor. We can press the button once to start the motor, then press it
 again to stop it. Button debouncing is accomplished in software by using a 300ms delay after detecting the first pulse before checking again. The IR transmitter is used to notify
@@ -100,7 +97,6 @@ Solve for Actual PWM Frequency
 |<a href="https://www.adafruit.com/product/1407">5V 200mA Inductive Charging Set </a>| x1 |
 
 ## 4. Clock Circuit <a name="clockcircuit"></a>
-### Description <a name="clockdescription"></a>
  This circuit will project the image of an anolog clock using the idea of POV (Persistence of Vision).
  The circuit is mounted to a brushless motor and will project the image of the clock everytime the
  motor completes a full rotation. An IR Detector connected to External Interrupt 0 is used to notify 
