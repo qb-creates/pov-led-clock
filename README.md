@@ -2,7 +2,7 @@
 
 A propeller display that projects an image of an analog clock using a single row of LEDs. The display utilizes an ATmega32 microcontroller two 16-channel LED drivers, and a brushless DC motor.
 
-- Project Video (YouTube): https://www.youtube.com/watch?v=ZK3UpSKuKRA
+- Project Video (YouTube): https://youtu.be/6KemDWqXEEw?si=eYfT2QDL8WkOBApL
 - Persistance of Vision: https://en.wikipedia.org/wiki/Persistence_of_vision
 
  <div align="center">
