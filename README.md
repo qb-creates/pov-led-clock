@@ -113,7 +113,7 @@ Solve for Actual PWM Frequency
 ### LED Drivers <a name="leddriver"></a>
 The LED Drivers are chained together. Each driver must receive two bytes of data to control their 16 output channels. Four bytes of data must be sent to the first driver in order to control all 32 output channels. The LEDs are mounted in order starting from the center of the PCB with LED 1 and ending at the opposite end with LED 32. The table below shows which output channel each LED is connected to. 
 
-|_**STP16CPC05 1**_||--|_**STP16CPC05 2**_||
+|_**STP16CPC05 1 Outputs**_|LED Number|--|_**STP16CPC05 2 Outputs**_|LED Number|
 |:--:|:--:|:--:|:--:|:--:|
 |**Byte0**||--|**Byte2**||
 |Out0|LED1|--|Out0|LED17|
