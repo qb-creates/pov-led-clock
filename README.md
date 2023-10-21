@@ -48,19 +48,13 @@ By adjusting the duty cycle of the PWM signal to a value where the time high is 
 again to stop it. Button debouncing is accomplished in software by using a 300ms delay after detecting the first pulse before checking again. The IR transmitter is used to notify
 the clock circuit that it has made it rotated back to it's starting position. The inductive transmitter will be mounted to the case while the receiver is mounted to the motor and connected
 to the clock circuit. The ESC's UBEC will supply the ATtiny, IR transmitter, and inductive transmitter with power (5V 3A).
-<!--<div>
-    <img src = "images/esc-driver-circuit-schematic.JPG">
-</div>-->
 <div align="center">
- <div style="float:left;">
-     <img src = "images/attiny-circuit-front.JPEG" width = "304" height = "405" style="padding: 0; margin: 0;">
-     <img src = "images/attiny-circuit-back.JPEG" width = "304" height = "405" style="padding: 0; margin: 0;">
- </div>
- <div style="float:left;"> 
-    <img src = "images/case-inside.JPEG" width = "410" height = "500">
+ <div>
+     <img src = "images/attiny-circuit-front.JPEG" width = "263" height = "350" style="padding: 0; margin: 0;">
+    <img src = "images/case-inside2.jpg" width = "455" height = "350">
+     <img src = "images/attiny-circuit-back.JPEG" width = "263" height = "350" style="padding: 0; margin: 0;">
  </div>
 </div>
-
 
 ### PWM Overview<a name="escpwm"></a>
 I wanted the PWM frequency to be as close to 500Hz as possible. The time high for a 100% duty cycle would be 2ms. Usually a 1ms pulse translates to 0% throttle and a 2ms pulse translates to 100% throttle. 
