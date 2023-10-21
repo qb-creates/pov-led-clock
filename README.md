@@ -22,6 +22,7 @@ microcontroller two 16-channel LED drivers, and a brushless DC motor.
 4. [Clock Circuit](#clockcircuit)
     - [LED Driver](#leddriver) <!-- Description of how data is transfered to led sinks -->
     - [IR Receiver](#irreceiver) <!-- External interrupt-->
+    - [Timer](#clocktimer) <!-- External interrupt-->
     - [Parts List](#clockpartslist) <!--Leaving out crystal because of balance. Modifying isp header  If you use crystal you will need to update FCPU and timer OCR-->
 5. [Hardware](#hardware)
 6. [Power Supply](#powersupply)
@@ -63,17 +64,17 @@ PWM Frequency Equation for ATtiny861
 - PWM Frequency = fck / (prescaler * 255)
    
 Variables
-- fck = 16000000 Mhz
+- fck = 16 Mhz
 - Target PWM Frequency = 500 Hz
 - prescaler = ?
   
 Solve for prescaler
 - prescaler = fck / (Target PWM Frequency * 255)
-- prescaler = 16000000 Mhz / (500 Hz * 255)
+- prescaler = 16 Mhz / (500 Hz * 255)
 - prescaler = 125.5 round to 128
 
 Solve for Actual PWM Frequency
-- Actual PWM Frequency = 16000000 Mhz / (128 * 255)
+- Actual PWM Frequency = 16 Mhz / (128 * 255)
 - Actual PWM Frequency = 490 Hz
 
 ### Parts List<a name="escpartslist"></a>
@@ -112,6 +113,27 @@ Solve for Actual PWM Frequency
 
 ### LED Driver <a name="leddriver"></a>
 ### IR Receiver <a name="irreceiver"></a>
+### Timer <a name="clocktimer"></a>
+A one second timer is configured to update the seconds hand of the clock. The timer is configured to operate in Clear Timer on Compare Match Mode (CTC). A CTC frequency of 0.5 Hz (2s) is required. 
+This will trigger the compare match interrupt every second.Because the weight of the crystal caused the ciruit to not be completely balanced, it was discarded and the ATmega32's internal 8 Mhz 
+oscillator was used instead. Calculations to find the appropriate OCRn values are listed below.
+
+CTC Waveform Frequency Equation
+- Frequency = fck / (2 * prescaler * (1 + OCRnA)).
+
+Variables
+- Frequency = 0.5Hz = 2 seconds
+- fck = 8 Mhz
+- prescaler = 256
+- OCR1A = ?
+
+Rearranged formula to solve for OCRnA:
+- OCR1A = (fck / (2 * prescaler * Frequency)) - 1
+
+Solve for OCRnA
+- OCR1A = (8 Mhz / (2 * 256 * 0.5Hz)) - 1 
+- OCR1A = 31249
+  
 ### Parts List <a name="clockpartslist"></a>
 |Part Number|Quantity|
 |-----|:--------:|
