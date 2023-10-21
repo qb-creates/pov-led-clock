@@ -21,7 +21,7 @@ A propeller display that projects an image of an analog clock using a single row
     - [LED Driver](#leddriver)
     - [Timer Overview](#clocktimer) 
     - [Parts List](#clockpartslist) 
-4. [Power Supply](#powersupply)
+4. [Power Consumption](#powerconsumption)
 5. [Schematics](#schematics)
     - [ESC Driver Schematic](#clockschematic)
     - [Clock Schematic](#clockschematic)
@@ -173,7 +173,7 @@ Solve for OCRnA
 |<a href="https://www.digikey.com/en/products/filter/diodes/rectifiers/single-diodes/280">1n4148 Diode</a>| x1 |
 |<a href="https://www.sparkfun.com/products/19018">Infrared Detector</a>| x1 |
 
-## 4. Power Consumption <a name="powersupply"></a>
+## 4. Power Consumption <a name="powerconsumption"></a>
 |_**Test Condition**_|_**Power Consumption**_|
 |:--|:--:|
 |Clock circuit with all LEDs powered on. LEDs are supplied with 3mA each.|120mA|
