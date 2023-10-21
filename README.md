@@ -17,7 +17,7 @@ microcontroller two 16-channel LED drivers, and a brushless DC motor.
 2. [Software Used](#software)
 3. [ESC Driver Circuit](#escdriver)
     - [Description](#escdescription) <!-- Description of the circuit. Schematic image.-->
-    - [PWM](#escpwm)
+    - [PWM Overview](#escpwm)
     - [Parts List](#escpartslist) <!--Choose a crystal where you can get pwm frequency between 50 - 500hz. Maybe include a small capacitor for button debouncing-->
 4. [Clock Circuit](#clockcircuit)
     - [Description](#clockdescription) <!-- Description of the circuit. Schematic. Double sided board for space-->
@@ -49,8 +49,28 @@ to the clock circuit. The ESC's UBEC will supply the ATtiny, IR transmitter, and
     <img src = "images/esc-driver-circuit-schematic.JPG">
 </div>
 
-### PWM<a name="escpwm"></a>
+### PWM Overview<a name="escpwm"></a>
+I wanted the PWM frequency to be as close to 500Hz as possible. The time high for a 100% duty cycle would be 2ms. Usually a 1ms pulse translates to 0% throttle and a 2ms pulse translates to 100% throttle. 
+The duty cycle of the PWM signal can be adjusted by setting Timer1's OCR1B register to a value between 0 and 255. I was able to use every between 128 and 255 for OCR1B without exceeding 2ms. 
+This gave me more wiggle when setting the speed of the motor instead of going from 0% throttle to 100% immediately. Duty Cycle would be equal to (OCR1B / 255) * 100.
 
+PWM Frequency Equation for ATtiny861
+- PWM Frequency = fck / (prescaler * 255)
+   
+Variables
+- fck = 16000000 Mhz
+- Target PWM Frequency = 500 Hz
+- prescaler = ?
+  
+Solve for prescaler
+- prescaler = fck / (Target PWM Frequency * 255)
+- prescaler = 16000000 Mhz / (500 Hz * 255)
+- prescaler = 125.5 round to 128
+
+Solve for Actual PWM Frequency
+- Actual PWM Frequency = 16000000 Mhz / (128 * 255)
+- Actual PWM Frequency = 490 Hz
+       
 ### Parts List<a name="escpartslist"></a>
 |Part Number|Quantity|
 |-----|:--------:|
