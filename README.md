@@ -50,9 +50,9 @@ the clock circuit that it has made it rotated back to it's starting position. Th
 to the clock circuit. The ESC's UBEC will supply the ATtiny, IR transmitter, and inductive transmitter with power (5V 3A).
 <div align="center">
  <div>
-    <img src = "images/attiny-circuit-front.JPEG" width = "236" height = "314" style="padding: 0; margin: 0;">
-    <img src = "images/case-inside2.jpg" width = "408" height = "314">
-    <img src = "images/attiny-circuit-back.JPEG" width = "236" height = "314" style="padding: 0; margin: 0;">
+    <img src = "images/attiny-circuit-front.JPEG" width = "225" height = "300" style="padding: 0; margin: 0;">
+    <img src = "images/case-inside2.jpg" width = "390" height = "314">
+    <img src = "images/attiny-circuit-back.JPEG" width = "225" height = "300" style="padding: 0; margin: 0;">
  </div>
 </div>
 
