@@ -17,11 +17,11 @@
  *   - PWM Frequency = fck / (prescaler * 255)
  * 
  * Variables
- *   - fck = 16000000Mhz
+ *   - fck = 16Mhz
  *   - prescaler = 128
  * 
  * Solve for PWM Frequency
- *   - PWM Frequency = 16000000Mhz / (128 * 255)
+ *   - PWM Frequency = 16Mhz / (128 * 255)
  *   - PWM Frequency = 490Hz
  */
 

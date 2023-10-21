@@ -21,7 +21,7 @@
  * 
  * Variables
  *   - Waveform Frequency = 0.5Hz = 2 seconds
- *   - fck = 8000000Mhz
+ *   - fck = 8Mhz
  *   - prescaler = 256
  *   - OCR1A = ?
  * 
@@ -29,7 +29,7 @@
  *   - OCR1A = (fck / (2 * prescaler * Waveform Frequency)) - 1
  * 
  * Solve for OCRnA
- *   - OCR1A = (8000000Mhz / (2 * 256 * 0.5Hz)) - 1 
+ *   - OCR1A = (8Mhz / (2 * 256 * 0.5Hz)) - 1 
  *   - OCR1A = 31249
  */
 
