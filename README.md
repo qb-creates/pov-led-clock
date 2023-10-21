@@ -7,8 +7,9 @@ microcontroller two 16-channel LED drivers, and a brushless DC motor.
 - Persistance of Vision: https://en.wikipedia.org/wiki/Persistence_of_vision
 
  <div align="center">
-    <!-- <img src="images/pov-led-clock-powered.png" width = "446" height = "428"> -->
-    <img src="images/pov-led-clock-powered.png" width = "335" height = "321">
+     <!--  <img src="images/pov-led-clock-powered.png" width = "446" height = "428">  -->
+    <!-- <img src="images/pov-led-clock-powered.png" width = "335" height = "321"> -->
+    <img src="images/pov-led-clock-powered.png" width = "400" height = "384">
  </div>
 
 <h2> Table of Contents</h2>
@@ -51,8 +52,8 @@ to the clock circuit. The ESC's UBEC will supply the ATtiny, IR transmitter, and
 <div align="center">
  <div>
     <img src = "images/attiny-circuit-front.JPEG" width = "206" height = "275" style="padding: 0; margin: 0;">
-    <img src = "images/case-inside2.jpg" width = "357" height = "275">
     <img src = "images/attiny-circuit-back.JPEG" width = "206" height = "275" style="padding: 0; margin: 0;">
+    <img src = "images/case-inside2.jpg" width = "357" height = "275">
  </div>
 </div>
 
@@ -107,7 +108,13 @@ Solve for Actual PWM Frequency
  at its home position. A 2 second CTC timer is used to add one second to the clock on each CTC compare 
  interrupt. This interrupt will be triggered every 1 second. Two 16 channel LED drivers are used to drive
  the LEDs. Communication with the LED drivers is done using the SPI protocol.
-
+<div>
+    <img src = "images/pov-led-clock.JPEG" width = "410" height = "500" style="padding: 0; margin: 0;">
+</div>
+<div>
+    <img src = "images/led-circuit-front.JPEG" width = "203" height = "270" style="padding: 0; margin: 0;">
+    <img src = "images/led-circuit-back.JPEG" width = "203" height = "270" style="padding: 0; margin: 0;">
+</div>
 
 ### LED Driver <a name="leddriver"></a>
 ### IR Receiver <a name="irreceiver"></a>
